@@ -11,14 +11,14 @@ public static void main(String[] args) {
 
 class CreateGui extends JFrame implements ActionListener {
 	private JFrame frame = new JFrame();
-	JMenuBar jmb;   //菜单条组件  
-    JMenu menu1, menu2, menu3, menu4, menu5;//菜单  
-    JMenuItem item1, item2, item3, item4, item5, item6;//菜单项  
-    JMenu build;    //二级菜单  
+	JMenuBar jmb;  
+    JMenu menu1, menu2, menu3, menu4, menu5; 
+    JMenuItem item1, item2, item3, item4, item5, item6;  
+    JMenu build;  
     JMenuItem file, project;  
     JTextArea jta;  
       
-    JToolBar jtb;//工具条  
+    JToolBar jtb; 
     JButton jb1, jb2, jb3, jb4, jb5, jb6, jb7;
     
 	CreateGui(){
@@ -98,10 +98,10 @@ class CreateGui extends JFrame implements ActionListener {
 		RNAFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public void toolbar() {
-		//创建工具条  
+		  
         jtb = new JToolBar();  
         jb1 = new JButton("New");  
-        jb1.setToolTipText("New");//鼠标悬停提示信息  
+        jb1.setToolTipText("New");  
         jb2 = new JButton("Open");  
         jb3 = new JButton("Copy");  
         jb4 = new JButton("Cut");  
@@ -112,15 +112,15 @@ class CreateGui extends JFrame implements ActionListener {
         jtb.add(jb4);  
         jtb.add(jb5);  
         jta = new JTextArea();  
-            //加入滚动条  
+              
         JScrollPane jsp = new JScrollPane(jta);  
         jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        frame.add(jtb, BorderLayout.NORTH);  //添加工具条
+        frame.add(jtb, BorderLayout.NORTH);  
 	}
 	public void menubar() {
 		jmb = new JMenuBar();  
         menu1 = new JMenu("File(F)");  
-        menu1.setMnemonic('f'); //助记符  
+        menu1.setMnemonic('f');   
         menu2 = new JMenu("Edit");  
         menu2.setMnemonic('E');  
         menu3 = new JMenu("Format");  
@@ -139,7 +139,7 @@ class CreateGui extends JFrame implements ActionListener {
           
         jta = new JTextArea();  
           
-            //添加菜单项至菜单上  
+              
         build.add(file);  
         build.add(project);  
           
@@ -151,13 +151,13 @@ class CreateGui extends JFrame implements ActionListener {
         menu1.add(item4);  
         menu1.add(item5);  
         menu1.add(item6);  
-            //将菜单加入至菜单栏  
+              
         jmb.add(menu1);  
         jmb.add(menu2);  
         jmb.add(menu3);  
         jmb.add(menu4);  
         jmb.add(menu5);  
-        frame.setJMenuBar(jmb);  //添加菜单栏，不能设定位置，会自动放在最上部
+        frame.setJMenuBar(jmb);  
 	}
 	
 }
