@@ -4,11 +4,13 @@ public class Alignable {
 	public Alignable(String alignable) {
 		this.alignableString=alignable;
 	}
-	
-	public String align(String string2) {
-		int gap=-2, match=1, mismatch=-1;
+	public static void align(String string1, String string2) {
+		 align(string1, string2, -2,1,-1);
+	}
+	public static void align(String string11,String string2, int gap1, int match1, int mismatch1) {
+		int gap=gap1, match= match1, mismatch=  mismatch1;
 		int scorevert, scorehor, scorediag;
-		String string1= alignableString;
+		String string1= string11;
 		String output1 = "", output2="";
 		int[][] scoreMatrix= new int[string1.length()][string2.length()];
 		char[][] directionMatrix = new char[string1.length()][string2.length()];
@@ -31,29 +33,34 @@ public class Alignable {
 			}
 		}
 		
-//		for (int i = 0; i < scoreMatrix.length; i++) {
-//		    for (int j = 0; j < scoreMatrix[i].length; j++) {
-//		        System.out.print(scoreMatrix[i][j] + "  ");
-//		    }
-//		    System.out.println();
-//		    }
-//		for (int i = 0; i < directionMatrix.length; i++) {
-//		    for (int j = 0; j < directionMatrix[i].length; j++) {
-//		        System.out.print(directionMatrix[i][j] + "  ");
-//		    }
-//		    System.out.println();
-//}
+		for (int i = 0; i < scoreMatrix.length; i++) {
+		    for (int j = 0; j < scoreMatrix[i].length; j++) {
+		        System.out.print(scoreMatrix[i][j] + "  ");
+		    }
+		    System.out.println();
+		    }
+		for (int i = 0; i < directionMatrix.length; i++) {
+		    for (int j = 0; j < directionMatrix[i].length; j++) {
+		        System.out.print(directionMatrix[i][j] + "  ");
+		    }
+		    System.out.println();
+}
 		int maxScore =0;
 		int maxI=0,maxJ=0;
-		for(int i = 1; i<string1.length(); i++) {
-			for(int j = 1; j<string2.length(); j++) {
-			if (scoreMatrix[i][j] > maxScore) {
-			    maxScore = scoreMatrix[i][j];
-			    maxI =i;
-			    maxJ=j;
+		for(int i=0; i<string1.length(); i++) {
+			if(scoreMatrix[i][string2.length()-1]>maxScore) {
+				maxI=i; maxJ=string2.length()-1;
 			}
-	    }
 	}
+		for(int j=0; j<string2.length(); j++) {
+			if(scoreMatrix[string1.length()-1][j]>maxScore) {
+				maxI=string1.length()-1; maxJ=j;
+			}
+	}
+ maxI++; maxJ++;
+	
+		//int i=string1.length()-1; int j= string2.length()-1;
+		
 		for(int i=0; i< Math.max(string1.length(), string2.length()); i++) {
 			if(directionMatrix[maxI][maxJ]=='d') {
 				output1= output1+string1.charAt(i);
@@ -68,8 +75,8 @@ public class Alignable {
 				output2=  output2+"-";
 				}
 		}
-		//System.out.println(output1+"\n"+output2);
-		return output1+"\n"+output2;
+		System.out.println(output1+"\n"+output2);
+		//return output1+"\n"+output2;
 }
 	
 }
