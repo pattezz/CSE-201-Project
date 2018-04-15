@@ -20,6 +20,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class UIV3 extends JFrame implements ActionListener {
 	private JFrame frame = new JFrame();
@@ -211,17 +212,22 @@ public class UIV3 extends JFrame implements ActionListener {
 		JLabel inputP = new JLabel("Protien Sequence 1");
 		inputP.setForeground(Color.white);
 		ProtienFrame.add(inputP);
-		TextField ProtiesInput = new TextField(100);
+		TextField ProtiesInput = new TextField(13);
 		ProtienFrame.add(ProtiesInput);
+		ProtiesInput.setForeground(Color.black);
+	
+	
 
 		JLabel inputP2 = new JLabel("Protien Sequence 2");
-		inputP.setForeground(Color.white);
+		inputP2.setForeground(Color.white);
 		ProtienFrame.add(inputP2);
-		TextField ProtiesInput2 = new TextField(100);
+		TextField ProtiesInput2 = new TextField(13);
 		ProtienFrame.add(ProtiesInput2);
+		ProtiesInput2.setForeground(Color.black);
+		
 
 		JButton submit = new JButton("Submit");
-		submit.setForeground(Color.white);
+		submit.setForeground(Color.black);
 		submit.setBackground(new Color(175, 175, 175));
 		ProtienFrame.add(submit);
 
@@ -229,7 +235,7 @@ public class UIV3 extends JFrame implements ActionListener {
 		ProtienFrame.add(score);
 		score.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("score")) {
+				if (e.getActionCommand().equals("scoring matrix")) {
 					try {
 						scoreMatrixi();
 					} catch (InvalidApplicationException e1) {
@@ -239,11 +245,12 @@ public class UIV3 extends JFrame implements ActionListener {
 				}
 			}
 
-			private void scoreMatrixi() throws InvalidApplicationException {
+			private String scoreMatrixi() throws InvalidApplicationException {
 				String a = ProtiesInput.getText();
 				String b = ProtiesInput2.getText();
 				diffMatrix test = new diffMatrix();
 				System.out.println(test.calculate80(a, b));
+				return test.calculate80(a, b); 
 
 			}
 		});
@@ -257,7 +264,7 @@ public class UIV3 extends JFrame implements ActionListener {
 
 		JButton Return = new JButton("Return");
 		Return.setBackground(new Color(0, 65, 32));
-		Return.setForeground(Color.white);
+		Return.setForeground(Color.black);
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
@@ -283,7 +290,7 @@ public class UIV3 extends JFrame implements ActionListener {
 		inputD.setForeground(Color.white);
 		DNAFrame.add(inputD);
 		TextField DNAInput = new TextField(13);
-		DNAInput.setForeground(Color.white);
+		DNAInput.setForeground(Color.black);
 		DNAFrame.add(DNAInput);
 
 		// JLabel outputR = new JLabel("RNA Sequence 2");
@@ -296,11 +303,13 @@ public class UIV3 extends JFrame implements ActionListener {
 		// JLabel inputR2 = new JLabel("DNA Sequence 2");
 		// inputD2.setForeground(Color.white);
 		TextField DNAInput2 = new TextField(13);
+		DNAInput2.setForeground(Color.black);
 		DNAFrame.add(DNAInput2);
 		// RNAFrame.add(inputR2);
 
 		JButton submit = new JButton("Submit");
 		// submit.setForeground(Color.white);
+		System.out.println(DNAInput2);
 		// submit.setBackground(new Color(175, 175, 175));
 		DNAFrame.add(submit);
 
@@ -312,13 +321,16 @@ public class UIV3 extends JFrame implements ActionListener {
 				}
 			}
 		});
-		JButton score = new JButton("Scoring matrix");
+		JButton score = new JButton("Blosum80matrix score");
 		DNAFrame.add(score);
+		JButton score2= new JButton("Blosum62matrix score");
+		DNAFrame.add(score2);
 		score.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("score")) {
+				if (e.getActionCommand().equals("Blosum80matrix score")) {
 					try {
-						scoreMatrixi();
+						scoreMatrix();
+				
 					} catch (InvalidApplicationException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -326,11 +338,34 @@ public class UIV3 extends JFrame implements ActionListener {
 				}
 			}
 
-			private void scoreMatrixi() throws InvalidApplicationException {
+			private String scoreMatrix() throws InvalidApplicationException {
 				String a = DNAInput.getText();
 				String b = DNAInput2.getText();
 				diffMatrix test = new diffMatrix();
 				System.out.println(test.calculate80(a, b));
+				return test.calculate80(a, b); 
+
+			}
+		});
+		score2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand().equals("Blosum62matrix score")) {
+					try {
+						scoreMatrix();
+				
+					} catch (InvalidApplicationException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+
+			private String scoreMatrix() throws InvalidApplicationException {
+				String a = DNAInput.getText();
+				String b = DNAInput2.getText();
+				diffMatrix test = new diffMatrix();
+				System.out.println(test.calculate80(a, b));
+				return test.calculate62(a, b); 
 
 			}
 		});
@@ -338,8 +373,12 @@ public class UIV3 extends JFrame implements ActionListener {
 		Graph.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Graph")) {
-					System.out.println("1");
-				}
+					String a = DNAInput.getText();
+					String b = DNAInput2.getText();
+					if (e.getActionCommand().equals("Graph")) {
+					Frame f = new Frame();
+				   f.s.graph(a, b);
+					}}
 			}
 		});
 		JButton Setting = new JButton("Setting");
@@ -382,6 +421,7 @@ public class UIV3 extends JFrame implements ActionListener {
 		DNAFrame.add(Setting);
 		DNAFrame.add(Save);
 		DNAFrame.add(Return);
+		
 	}
 
 	public void RNAmethod() {
@@ -396,7 +436,7 @@ public class UIV3 extends JFrame implements ActionListener {
 		JLabel inputR = new JLabel("RNA Sequence ");
 		inputR.setForeground(Color.white);
 		RNAFrame.add(inputR);
-		TextField RNAInput = new TextField(13);
+		JTextField RNAInput = new JTextField(13);
 		RNAInput.setForeground(Color.black);
 
 		RNAFrame.add(RNAInput);
@@ -410,7 +450,7 @@ public class UIV3 extends JFrame implements ActionListener {
 
 		// JLabel inputR2 = new JLabel("DNA Sequence 2");
 		// inputD2.setForeground(Color.white);
-		TextField RNAInput2 = new TextField(13);
+		JTextField RNAInput2 = new JTextField(13);
 		RNAInput2.setForeground(Color.black);
 		RNAFrame.add(RNAInput2);
 		// RNAFrame.add(inputR2);
@@ -420,13 +460,16 @@ public class UIV3 extends JFrame implements ActionListener {
 		// submit.setBackground(new Color(175, 175, 175));
 		RNAFrame.add(submit);
 
-		JButton score = new JButton("Scoring matrix");
+		JButton score = new JButton("Blosum80matrix score");
 		RNAFrame.add(score);
+		JButton score2 = new JButton("Blosum62matrix score");
+		RNAFrame.add(score2);
 		score.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("score")) {
+				if (e.getActionCommand().equals("Blosum80matrix score")) {
 					try {
-						scoreMatrixi();
+						scoreMatrix();
+					
 					} catch (InvalidApplicationException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -434,11 +477,34 @@ public class UIV3 extends JFrame implements ActionListener {
 				}
 			}
 
-			private void scoreMatrixi() throws InvalidApplicationException {
+			private String scoreMatrix() throws InvalidApplicationException {
 				String a = RNAInput.getText();
 				String b = RNAInput2.getText();
 				diffMatrix test = new diffMatrix();
 				System.out.println(test.calculate80(a, b));
+				return test.calculate80(a, b); 
+
+			}
+		});
+		score2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand().equals("Blosum62matrix score")) {
+					try {
+						scoreMatrix();
+					
+					} catch (InvalidApplicationException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+
+			private String scoreMatrix() throws InvalidApplicationException {
+				String a = RNAInput.getText();
+				String b = RNAInput2.getText();
+				diffMatrix test = new diffMatrix();
+				System.out.println(test.calculate80(a, b));
+				return test.calculate62(a, b); 
 
 			}
 		});
@@ -446,15 +512,19 @@ public class UIV3 extends JFrame implements ActionListener {
 		Align.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Align")) {
-
+                       
 				}
 			}
 		});
 		JButton Graph = new JButton("Graph");
 		Graph.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String a = RNAInput.getText();
+				String b = RNAInput2.getText();
 				if (e.getActionCommand().equals("Graph")) {
-					System.out.println("1");
+				Frame f = new Frame();
+			   f.s.graph(a, b);
+				
 				}
 			}
 		});
@@ -543,4 +613,3 @@ public class UIV3 extends JFrame implements ActionListener {
 		frame.setJMenuBar(jmb);
 	}
 }
-	
