@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+import javax.management.InvalidApplicationException;
+
+
+public class tester {
+
+	public static void main(String[] args) throws InvalidApplicationException {
+		diffMatrix test = new diffMatrix();
+		Scanner in = new Scanner(System.in);
+		System.out.println("Input sequence1 and sequence2 which they must have same length:");
+		String sequence1= in.nextLine();
+		String sequence2= in.nextLine();
+		System.out.println("Choose different scoring matrix");
+		System.out.println("1. Blosum80");
+		System.out.println("2. Blosum62");
+		System.out.println("Input  '1' or '2' ");
+		int input = in.nextInt();
+		if(input==1)
+		System.out.println(test.calculate80(sequence1,sequence2));
+		if(input==2)
+			System.out.println(test.calculate62(sequence1,sequence2));
+
+	}
+
+}
