@@ -76,8 +76,32 @@ public class diffMatrix {
 			{-2, -2, -2, -3, -2, -1, -2, -3,  2, -1, -1, -2, -1,  3, -3, -2, -2,  2,  7, -1},
 			{ 0, -3, -3, -3, -1, -2, -2, -3, -3,  3,  1, -2,  1, -1, -2, -2,  0, -3, -1,  4}};
 
+	public diffMatrix() throws InvalidApplicationException{
+		
+	}
+	  public String calculate80(String sequence1, String sequence2) throws InvalidApplicationException{
+		  int result;
+		  String result1="";
+		  for(int i =0; i< sequence1.length();i++){
+			 result = BLOSUM80Matrix[getIndex(sequence1.charAt(i))][getIndex(sequence2.charAt(i))];
+			 result1 += result;
+		  }
+		return  result1;
+    	
+    }
+	  public String calculate62(String sequence1, String sequence2) throws InvalidApplicationException{
+		  int result;
+		  String result1="";
+		  for(int i =0; i< sequence1.length();i++){
+			 result = Blosum62Matrix[getIndex(sequence1.charAt(i))][getIndex(sequence2.charAt(i))];
+			 result1 += result;
+		  }
+		return  result1;
+    	
+    }
 
-	private static int getIndex(char a) throws InvalidApplicationException {
+	public static int getIndex(char a) throws InvalidApplicationException {
+
 		// check for upper and lowercase characters
 		switch ((String.valueOf(a)).toUpperCase().charAt(0)) {
 		case 'A':
