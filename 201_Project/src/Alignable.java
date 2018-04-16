@@ -1,8 +1,8 @@
 
 	public class Alignable {
-		public String alignableString;
-		public Alignable(String alignable) {
-			this.alignableString=alignable;
+		public static String alignedSequence;
+		public Alignable() {
+			alignedSequence= null;
 		}
 		public static void align(String string1, String string2) {
 			 align(string1, string2, -2,1,-1);
@@ -82,8 +82,14 @@
 				output1=a1+output1;
 				output2=a2+output2;
 			}
-			
+			alignedSequence= output1+"\n"+output2;
 			System.out.println(output1+"\n"+output2);
 			//return output1+"\n"+output2;
 	}
+		public boolean equals(Alignable a) {
+			if(a.alignedSequence.equals(this.alignedSequence)) {
+				return true;
+			}
+			return false;
+		}
 }
