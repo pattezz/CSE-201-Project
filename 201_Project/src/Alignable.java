@@ -1,13 +1,16 @@
 
 	public class Alignable {
-		public static String alignedSequence;
+		private static  String alignedSequence;
+		private static int[][] matrix;
 		public Alignable() {
-			alignedSequence= null;
+			alignedSequence= "";
+			
+			
 		}
 		public static void align(String string1, String string2) {
 			 align(string1, string2, -2,1,-1);
 		}
-		public static void align(String string11,String string2, int gap1, int match1, int mismatch1) {
+		public static String align(String string11,String string2, int gap1, int match1, int mismatch1) {
 			int gap=gap1, match= match1, mismatch=  mismatch1;
 			int scorevert, scorehor, scorediag;
 			String string1= string11;
@@ -33,18 +36,18 @@
 				}
 			}
 			
-			for (int i = 0; i < scoreMatrix.length; i++) {
-			    for (int j = 0; j < scoreMatrix[i].length; j++) {
-			        System.out.print(scoreMatrix[i][j] + "  ");
-			    }
-			    System.out.println();
-			    }
-			for (int i = 0; i < directionMatrix.length; i++) {
-			    for (int j = 0; j < directionMatrix[i].length; j++) {
-			        System.out.print(directionMatrix[i][j] + "  ");
-			    }
-			    System.out.println();
-	}
+//			for (int i = 0; i < scoreMatrix.length; i++) {
+//			    for (int j = 0; j < scoreMatrix[i].length; j++) {
+//			        System.out.print(scoreMatrix[i][j] + "  ");
+//			    }
+//			    System.out.println();
+//			    }
+//			for (int i = 0; i < directionMatrix.length; i++) {
+//			    for (int j = 0; j < directionMatrix[i].length; j++) {
+//			        System.out.print(directionMatrix[i][j] + "  ");
+//			    }
+//			    System.out.println();
+//	}
 			int maxScore =-1000;
 			int maxI=0,maxJ=0;
 			for(int i=0; i<string1.length(); i++) {
@@ -83,8 +86,9 @@
 				output2=a2+output2;
 			}
 			alignedSequence= output1+"\n"+output2;
-			System.out.println(output1+"\n"+output2);
-			//return output1+"\n"+output2;
+			matrix =scoreMatrix;
+//			System.out.println(output1+"\n"+output2);
+			return output1+"\n"+output2;
 	}
 		public boolean equals(Alignable a) {
 			if(a.alignedSequence.equals(this.alignedSequence)) {
