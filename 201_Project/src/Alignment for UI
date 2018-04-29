@@ -1,7 +1,12 @@
-public class Alignable {
-		public static String alignedSequence;
+
+
+	public class Alignable {
+		private static  String alignedSequence;
+		private static int[][] matrix;
 		public Alignable() {
-			alignedSequence= null;
+			alignedSequence= "";
+			
+			
 		}
 		public static String align(String string1, String string2) {
 			 return align(string1, string2, -2,1,-1);
@@ -11,8 +16,6 @@ public class Alignable {
 			int scorevert, scorehor, scorediag;
 			String string1= string11;
 			String output1 = "", output2="";
-			String m1="", m2="";
-			String result="";
 			int[][] scoreMatrix= new int[string1.length()][string2.length()];
 			char[][] directionMatrix = new char[string1.length()][string2.length()];
 			for(int i =0; i<string1.length();i++) {
@@ -34,21 +37,18 @@ public class Alignable {
 				}
 			}
 			
-			for (int i = 0; i < scoreMatrix.length; i++) {
-			    for (int j = 0; j < scoreMatrix[i].length; j++) {
-			       m1 += scoreMatrix[i][j] + "  ";
-			       
-			       
-			    }
-			    m1+= "\n";
-			   
-			    } System.out.println(m1);
-			for (int i = 0; i < directionMatrix.length; i++) {
-			    for (int j = 0; j < directionMatrix[i].length; j++) {
-			    m2 += directionMatrix[i][j] + "  ";
-			    }
-			    m2+= "\n";
-	}
+//			for (int i = 0; i < scoreMatrix.length; i++) {
+//			    for (int j = 0; j < scoreMatrix[i].length; j++) {
+//			        System.out.print(scoreMatrix[i][j] + "  ");
+//			    }
+//			    System.out.println();
+//			    }
+//			for (int i = 0; i < directionMatrix.length; i++) {
+//			    for (int j = 0; j < directionMatrix[i].length; j++) {
+//			        System.out.print(directionMatrix[i][j] + "  ");
+//			    }
+//			    System.out.println();
+//	}
 			int maxScore =-1000;
 			int maxI=0,maxJ=0;
 			for(int i=0; i<string1.length(); i++) {
@@ -86,11 +86,10 @@ public class Alignable {
 				output1=a1+output1;
 				output2=a2+output2;
 			}
-			System.out.println(output1);
 			alignedSequence= output1+"\n"+output2;
-			result= output1+"\n"+output2 +"\n"+ m1+"\n" + m2;
-			return result;
-			//return output1+"\n"+output2;
+			matrix =scoreMatrix;
+//			System.out.println(output1+"\n"+output2);
+			return output1+"\n"+output2;
 	}
 		public boolean equals(Alignable a) {
 			if(a.alignedSequence.equals(this.alignedSequence)) {
