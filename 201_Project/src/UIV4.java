@@ -15,31 +15,23 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
-public class UIV3 extends JFrame implements ActionListener {
+public class UIV4 extends JFrame implements ActionListener {
 	private JFrame frame = new JFrame();
-	JMenuBar jmb;
-	JMenu menu1, menu2, menu3, menu4, menu5;
-	JMenuItem item1, item2, item3, item4, item5, item6;
-	JMenu build;
-	JMenuItem file, project;
-	JTextArea jta;
-
+	save mem = new save();
 	public static void main(String[] args) {
-		UIV3 GUI3 = new UIV3();
+		UIV4 GUI4 = new UIV4();
 	}
 
-	public UIV3() {
-		frame.setSize(400, 400);
+	public UIV4() {
+		frame.setSize(500, 500);
 		frame.setTitle("Bioinformatic Toolkit");
-		// frame.getContentPane().setBackground(new Color(0, 65, 32));
-		menubar();
+		//frame.getContentPane().setBackground(new Color(0, 65, 32));
 		JPanel panelDNA = new JPanel();
 		// panelDNA.setBackground(new Color(0, 65, 32));
 
@@ -59,7 +51,7 @@ public class UIV3 extends JFrame implements ActionListener {
 		// RNA.setForeground(Color.white);
 		// RNA.setPreferredSize(new Dimension(300, 100));
 		RNA.setFont(new Font("Arial", Font.PLAIN, 20));
-		// RNA.setLayout(new GridLayout(2, 3));
+		
 		RNA.addActionListener(this);
 		panelRNA.setLayout(new GridLayout(1, 3));
 		panelRNA.add(RNA);
@@ -97,8 +89,7 @@ public class UIV3 extends JFrame implements ActionListener {
 		muliSequence.addActionListener(this);
 		muliPanel.add(muliSequence);
 
-		// JPanel search = new JPanel();
-		// search.setLayout(new BoxLayout(search, BoxLayout.Y_AXIS));
+		
 		JButton SearchB = new JButton("Search");
 		SearchB.setFont(new Font("Arial", Font.PLAIN, 20));
 		SearchB.addActionListener(this);
@@ -148,48 +139,40 @@ public class UIV3 extends JFrame implements ActionListener {
 			MuliMethod();
 		}
 		if (e.getActionCommand().equals("Search")) {
-			frame.setVisible(false);
-			SearchMethod();
+			
+			
 		}
 		if (e.getActionCommand().equals("Close")) {
 			frame.setVisible(false);
-			CloseMethod();
+			
 		}
 
 	}
 
-	private void CloseMethod() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void SearchMethod() {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	private void MuliMethod() {
 		JFrame MuliFrame = new JFrame("Mulisequence");
-		MuliFrame.getContentPane().setBackground(new Color(0, 65, 32));
+		//MuliFrame.getContentPane().setBackground(new Color(0, 65, 32));
 		MuliFrame.setSize(500, 500);
 		MuliFrame.setLayout(new FlowLayout());
 		MuliFrame.setVisible(true);
 
 		JLabel inputM = new JLabel("Mulisequence");
-		inputM.setForeground(Color.white);
+		//inputM.setForeground(Color.white);
 		MuliFrame.add(inputM);
 		TextField ProtiesInput = new TextField(100);
 		MuliFrame.add(ProtiesInput);
 
 		JButton add = new JButton("Add");
-		add.setForeground(Color.black);
-		add.setBackground(new Color(175, 175, 175));
+		//add.setForeground(Color.black);
+		//add.setBackground(new Color(175, 175, 175));
 		add.addActionListener(this);
 		MuliFrame.add(add);
 
 		JButton Return = new JButton("Return");
-		Return.setBackground(new Color(0, 65, 32));
-		Return.setForeground(Color.BLACK);
+		//Return.setBackground(new Color(0, 65, 32));
+		//Return.setForeground(Color.BLACK);
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
@@ -204,31 +187,33 @@ public class UIV3 extends JFrame implements ActionListener {
 
 	private void Protienmethod() {
 		JFrame ProtienFrame = new JFrame("Protien");
-		ProtienFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		ProtienFrame.setSize(500, 500);
+		// ProtienFrame.getContentPane().setBackground(new Color(0, 65, 32));
+		ProtienFrame.setSize(580, 580);
 		ProtienFrame.setLayout(new FlowLayout());
 		ProtienFrame.setVisible(true);
 
+		
+		JPanel Sequence = new JPanel();
+		Sequence.setLayout(new GridLayout(2,2));
 		JLabel inputP = new JLabel("Protien Sequence 1");
-		inputP.setForeground(Color.white);
-		ProtienFrame.add(inputP);
+		// inputP.setForeground(Color.white);
+		Sequence.add(inputP);
 		TextField ProtiesInput = new TextField(13);
-		ProtienFrame.add(ProtiesInput);
-		ProtiesInput.setForeground(Color.black);
-	
-	
+		Sequence.add(ProtiesInput);
+		// ProtiesInput.setForeground(Color.black);
 
 		JLabel inputP2 = new JLabel("Protien Sequence 2");
-		inputP2.setForeground(Color.white);
-		ProtienFrame.add(inputP2);
+		// inputP2.setForeground(Color.white);
+		Sequence.add(inputP2);
 		TextField ProtiesInput2 = new TextField(13);
-		ProtienFrame.add(ProtiesInput2);
-		ProtiesInput2.setForeground(Color.black);
+		Sequence.add(ProtiesInput2);
+		// ProtiesInput2.setForeground(Color.black);
 		
+		ProtienFrame.add(Sequence);
 
 		JButton submit = new JButton("Submit");
-		submit.setForeground(Color.black);
-		submit.setBackground(new Color(175, 175, 175));
+		// submit.setForeground(Color.black);
+		// submit.setBackground(new Color(175, 175, 175));
 		ProtienFrame.add(submit);
 
 		JButton score = new JButton("Scoring matrix");
@@ -237,7 +222,7 @@ public class UIV3 extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("scoring matrix")) {
 					try {
-						scoreMatrixi();
+						JLabel score = new JLabel(scoreMatrixi());
 					} catch (InvalidApplicationException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -250,21 +235,14 @@ public class UIV3 extends JFrame implements ActionListener {
 				String b = ProtiesInput2.getText();
 				diffMatrix test = new diffMatrix();
 				System.out.println(test.calculate80(a, b));
-				return test.calculate80(a, b); 
+				return test.calculate80(a, b);
 
 			}
 		});
-		JLabel outputP = new JLabel("blank");
-		outputP.setForeground(Color.white);
-		ProtienFrame.add(outputP);
-		// JTextField showR = new JTextField(13);
-		// conPane.add(showR);
-		System.out.println("1");
-		ProtienFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JButton Return = new JButton("Return");
-		Return.setBackground(new Color(0, 65, 32));
-		Return.setForeground(Color.black);
+		// Return.setBackground(new Color(0, 65, 32));
+		// Return.setForeground(Color.black);
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
@@ -274,63 +252,98 @@ public class UIV3 extends JFrame implements ActionListener {
 			}
 		});
 		ProtienFrame.add(Return);
-
+		ProtienFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public void DNAmethod() {
-		JFrame DNAFrame = new JFrame("DNA Align");
-		DNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
+		JFrame DNAFrame = new JFrame("DNA");
+		// DNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
 		DNAFrame.setSize(500, 500);
 		DNAFrame.setLayout(new FlowLayout());
 		DNAFrame.setVisible(true);
 		// DNAFrame.getContentPane();
 		// Container conPaneD = getContentPane();
 
-		JLabel inputD = new JLabel("DNA Sequence ");
-		inputD.setForeground(Color.white);
+		JLabel inputD = new JLabel("DNA Sequence 1");
+		// inputD.setForeground(Color.white);
 		DNAFrame.add(inputD);
+
 		TextField DNAInput = new TextField(13);
-		DNAInput.setForeground(Color.black);
+		// DNAInput.setForeground(Color.black);
 		DNAFrame.add(DNAInput);
 
-		// JLabel outputR = new JLabel("RNA Sequence 2");
-		// outputR.setForeground(Color.white);
-		// RNAFrame.add(outputR);
-		// JTextField showR = new JTextField(13);
-		// conPane.add(showR);
-		// System.out.println("2");
-
-		// JLabel inputR2 = new JLabel("DNA Sequence 2");
+		JLabel input2 = new JLabel("DNA Sequence 2");
+		DNAFrame.add(input2);
 		// inputD2.setForeground(Color.white);
+
 		TextField DNAInput2 = new TextField(13);
-		DNAInput2.setForeground(Color.black);
+		// DNAInput2.setForeground(Color.black);
 		DNAFrame.add(DNAInput2);
 		// RNAFrame.add(inputR2);
-
-		JButton submit = new JButton("Submit");
-		// submit.setForeground(Color.white);
-		System.out.println(DNAInput2);
-		// submit.setBackground(new Color(175, 175, 175));
-		DNAFrame.add(submit);
 
 		JButton Align = new JButton("Align");
 		Align.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Align")) {
-					System.out.println("1");
+					JLabel align = new JLabel(alignMethod(),
+							SwingConstants.CENTER);
+					JFrame align1 = new JFrame("Alignment result");
+					align1.setSize(500, 500);
+					align1.setLocation(300, 300);
+					align1.setLayout(new FlowLayout());
+					align1.setVisible(true);
+					align1.add(align);
+
+					JButton close = new JButton("Close");
+					align1.add(close);
+					close.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if (e.getActionCommand().equals("Close")) {
+								align1.setVisible(false);
+
+							}
+						}
+					});
 				}
 			}
+
+			private String alignMethod() {
+				String a = DNAInput.getText();
+				String b = DNAInput2.getText();
+				Alignable s = new Alignable();
+				//System.out.println(Alignable.align(a, b));
+				return Alignable.align(a, b);
+
+			}
 		});
-		JButton score = new JButton("Blosum80matrix score");
-		DNAFrame.add(score);
-		JButton score2= new JButton("Blosum62matrix score");
-		DNAFrame.add(score2);
-		score.addActionListener(new ActionListener() {
+
+		JButton score80 = new JButton("Blosum80matrix score");
+		DNAFrame.add(score80);
+		JButton score62 = new JButton("Blosum62matrix score");
+		DNAFrame.add(score62);
+		score80.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Blosum80matrix score")) {
 					try {
-						scoreMatrix();
-				
+						JLabel score = new JLabel(scoreMatrix80());
+						JFrame score80 = new JFrame("Blosum80 score");
+						score80.setSize(200, 200);
+						score80.setLocation(300, 300);
+						score80.setLayout(new FlowLayout());
+						score80.setVisible(true);
+						score80.add(score);
+
+						JButton close = new JButton("Close");
+						score80.add(close);
+						close.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								if (e.getActionCommand().equals("Close")) {
+									score80.setVisible(false);
+									score80.dispose();
+
+								}
+							}
+						});
 					} catch (InvalidApplicationException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -338,21 +351,37 @@ public class UIV3 extends JFrame implements ActionListener {
 				}
 			}
 
-			private String scoreMatrix() throws InvalidApplicationException {
+			private String scoreMatrix80() throws InvalidApplicationException {
 				String a = DNAInput.getText();
 				String b = DNAInput2.getText();
 				diffMatrix test = new diffMatrix();
 				System.out.println(test.calculate80(a, b));
-				return test.calculate80(a, b); 
+				return test.calculate80(a, b);
 
 			}
 		});
-		score2.addActionListener(new ActionListener() {
+		score62.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Blosum62matrix score")) {
 					try {
-						scoreMatrix();
-				
+						JLabel score = new JLabel(scoreMatrix62());
+						JFrame score62 = new JFrame("Blosum62 score");
+						score62.setSize(200, 200);
+						score62.setLocation(300, 300);
+						score62.setLayout(new FlowLayout());
+						score62.setVisible(true);
+						score62.add(score);
+						JButton close = new JButton("Close");
+						score62.add(close);
+						close.addActionListener(new ActionListener() {
+
+							public void actionPerformed(ActionEvent e) {
+								if (e.getActionCommand().equals("Close")) {
+									score62.setVisible(false);
+									score62.dispose();
+								}
+							}
+						});
 					} catch (InvalidApplicationException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -360,25 +389,40 @@ public class UIV3 extends JFrame implements ActionListener {
 				}
 			}
 
-			private String scoreMatrix() throws InvalidApplicationException {
+			private String scoreMatrix62() throws InvalidApplicationException {
 				String a = DNAInput.getText();
 				String b = DNAInput2.getText();
 				diffMatrix test = new diffMatrix();
-				System.out.println(test.calculate80(a, b));
-				return test.calculate62(a, b); 
+				System.out.println(test.calculate62(a, b));
+				return test.calculate62(a, b);
 
 			}
 		});
+
 		JButton Graph = new JButton("Graph");
 		Graph.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Graph")) {
 					String a = DNAInput.getText();
 					String b = DNAInput2.getText();
-					if (e.getActionCommand().equals("Graph")) {
 					Frame f = new Frame();
-				   f.s.graph(a, b);
-					}}
+					if (e.getActionCommand().equals("Graph")) {
+						f.s.graph(a, b);
+					}	
+						JButton close = new JButton("Close");
+						f.add(close);
+						close.addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								if (e.getActionCommand().equals("Close")) {
+									f.dispose();
+									f.setVisible(false);
+									
+								}
+							}
+						});
+					}
+				
 			}
 		});
 		JButton Setting = new JButton("Setting");
@@ -393,18 +437,17 @@ public class UIV3 extends JFrame implements ActionListener {
 		Save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Save")) {
-					System.out.println("1");
+					String a = DNAInput.getText();
+					String b = DNAInput2.getText();
+					
+					Alignable savedAlignable = new Alignable();
+					savedAlignable.align(a, b);
+					mem.add(savedAlignable);
+					mem.export(savedAlignable);
 				}
 			}
 		});
 
-		// JLabel outputD = new JLabel("Align for your DNA");
-		// outputD.setForeground(Color.white);
-		// DNAFrame.add(outputD);
-		// JTextField showR = new JTextField(13);
-		// conPane.add(showR);
-		// System.out.println("1");
-		DNAFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JButton Return = new JButton("Return");
 		// Return.setBackground(new Color(0, 65, 32));
 		// Return.setForeground(Color.white);
@@ -416,60 +459,73 @@ public class UIV3 extends JFrame implements ActionListener {
 				}
 			}
 		});
+
 		DNAFrame.add(Align);
 		DNAFrame.add(Graph);
 		DNAFrame.add(Setting);
 		DNAFrame.add(Save);
 		DNAFrame.add(Return);
-		
+		DNAFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
 
 	public void RNAmethod() {
 		JFrame RNAFrame = new JFrame("RNA Align");
-		RNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
+		// RNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
 		RNAFrame.setSize(500, 500);
 		RNAFrame.setLayout(new FlowLayout());
 		RNAFrame.setVisible(true);
 		// DNAFrame.getContentPane();
 		// Container conPaneD = getContentPane();
 
-		JLabel inputR = new JLabel("RNA Sequence ");
-		inputR.setForeground(Color.white);
+		JLabel inputR = new JLabel("RNA Sequence 1 ");
+		// inputR.setForeground(Color.white);
 		RNAFrame.add(inputR);
 		JTextField RNAInput = new JTextField(13);
-		RNAInput.setForeground(Color.black);
+		// RNAInput.setForeground(Color.black);
 
 		RNAFrame.add(RNAInput);
 
-		// JLabel outputR = new JLabel("RNA Sequence 2");
-		// outputR.setForeground(Color.white);
-		// RNAFrame.add(outputR);
-		// JTextField showR = new JTextField(13);
-		// conPane.add(showR);
-		// System.out.println("2");
 
-		// JLabel inputR2 = new JLabel("DNA Sequence 2");
-		// inputD2.setForeground(Color.white);
+		JLabel inputR2 = new JLabel("RNA Sequence 2");
 		JTextField RNAInput2 = new JTextField(13);
-		RNAInput2.setForeground(Color.black);
+		// inputD2.setForeground(Color.white);
+		RNAFrame.add(inputR2);
+
+		// RNAInput2.setForeground(Color.black);
 		RNAFrame.add(RNAInput2);
 		// RNAFrame.add(inputR2);
 
-		JButton submit = new JButton("Submit");
-		// submit.setForeground(Color.white);
-		// submit.setBackground(new Color(175, 175, 175));
-		RNAFrame.add(submit);
-
-		JButton score = new JButton("Blosum80matrix score");
-		RNAFrame.add(score);
-		JButton score2 = new JButton("Blosum62matrix score");
-		RNAFrame.add(score2);
-		score.addActionListener(new ActionListener() {
+		JButton score80 = new JButton("Blosum80matrix score");
+		RNAFrame.add(score80);
+		JButton score62 = new JButton("Blosum62matrix score");
+		RNAFrame.add(score62);
+		score80.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Blosum80matrix score")) {
 					try {
-						scoreMatrix();
-					
+						JLabel score = new JLabel(scoreMatrix80());
+						JFrame score80 = new JFrame("Blosum80 score");
+						score80.setSize(200, 200);
+						score80.setLocation(300, 300);
+						score80.setLayout(new FlowLayout());
+						score80.setVisible(true);
+						score80.add(score);
+
+						JButton close = new JButton("Close");
+						score80.add(close);
+						close.addActionListener(new ActionListener() {
+
+							public void actionPerformed(ActionEvent e) {
+								if (e.getActionCommand().equals("Close")) {
+									score80.setVisible(false);
+
+								}
+
+							}
+
+						});
+
 					} catch (InvalidApplicationException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -477,34 +533,55 @@ public class UIV3 extends JFrame implements ActionListener {
 				}
 			}
 
-			private String scoreMatrix() throws InvalidApplicationException {
+			private String scoreMatrix80() throws InvalidApplicationException {
 				String a = RNAInput.getText();
 				String b = RNAInput2.getText();
 				diffMatrix test = new diffMatrix();
 				System.out.println(test.calculate80(a, b));
-				return test.calculate80(a, b); 
+				return test.calculate80(a, b);
 
 			}
 		});
-		score2.addActionListener(new ActionListener() {
+		score62.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Blosum62matrix score")) {
 					try {
-						scoreMatrix();
-					
+						JLabel score = new JLabel(scoreMatrix62());
+						JFrame score62 = new JFrame("Blosum62 score");
+						score62.setSize(200, 200);
+						score62.setLocation(300, 300);
+						score62.setLayout(new FlowLayout());
+						score62.setVisible(true);
+						score62.add(score);
+						JButton close = new JButton("Close");
+						score62.add(close);
+						close.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								if (e.getActionCommand().equals("Close")) {
+									score62.setVisible(false);
+
+								}
+
+							}
+
+						});
+
 					} catch (InvalidApplicationException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
+
 			}
 
-			private String scoreMatrix() throws InvalidApplicationException {
+			private String scoreMatrix62() throws InvalidApplicationException {
 				String a = RNAInput.getText();
 				String b = RNAInput2.getText();
 				diffMatrix test = new diffMatrix();
-				System.out.println(test.calculate80(a, b));
-				return test.calculate62(a, b); 
+				System.out.println(test.calculate62(a, b));
+				return test.calculate62(a, b);
 
 			}
 		});
@@ -512,19 +589,59 @@ public class UIV3 extends JFrame implements ActionListener {
 		Align.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Align")) {
-                       
+
+					JLabel align = new JLabel(alignMethod(),
+							SwingConstants.CENTER);
+					JFrame align1 = new JFrame("Alignment result");
+					align1.setSize(500, 500);
+					align1.setLocation(300, 300);
+					align1.setLayout(new FlowLayout());
+					align1.setVisible(true);
+					align1.add(align);
+
+					JButton close = new JButton("Close");
+					align1.add(close);
+					close.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if (e.getActionCommand().equals("Close")) {
+								align1.setVisible(false);
+
+							}
+						}
+					});
 				}
 			}
+
+			private String alignMethod() {
+				String a = RNAInput.getText();
+				String b = RNAInput2.getText();
+				Alignable s = new Alignable();
+
+				return Alignable.align(a, b);
+
+			}
 		});
+
 		JButton Graph = new JButton("Graph");
 		Graph.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String a = RNAInput.getText();
 				String b = RNAInput2.getText();
 				if (e.getActionCommand().equals("Graph")) {
-				Frame f = new Frame();
-			   f.s.graph(a, b);
-				
+					Frame f = new Frame();
+					f.s.graph(a, b);
+					JButton close = new JButton("Close");
+					close.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if (e.getActionCommand().equals("Close")) {
+								f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+							}
+
+						}
+
+					});
+
 				}
 			}
 		});
@@ -540,18 +657,17 @@ public class UIV3 extends JFrame implements ActionListener {
 		Save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Save")) {
-					System.out.println("1");
+					String a = RNAInput.getText();
+					String b = RNAInput2.getText();
+					
+					Alignable savedAlignable = new Alignable();
+					savedAlignable.align(a, b);
+					mem.add(savedAlignable);
+					mem.export(savedAlignable);
 				}
 			}
 		});
 
-		// JLabel outputD = new JLabel("Align for your DNA");
-		// outputD.setForeground(Color.white);
-		// DNAFrame.add(outputD);
-		// JTextField showR = new JTextField(13);
-		// conPane.add(showR);
-		// System.out.println("1");
-		RNAFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JButton Return = new JButton("Return");
 		// Return.setBackground(new Color(0, 65, 32));
 		// Return.setForeground(Color.white);
@@ -571,45 +687,5 @@ public class UIV3 extends JFrame implements ActionListener {
 		RNAFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	public void menubar() {
-		jmb = new JMenuBar();
-		menu1 = new JMenu("File(F)");
-		menu1.setMnemonic('f');
-		menu2 = new JMenu("Edit");
-		menu2.setMnemonic('E');
-		menu3 = new JMenu("Format");
-		menu4 = new JMenu("View");
-		menu5 = new JMenu("Help");
-		build = new JMenu("New");
 
-		file = new JMenuItem("File");
-		project = new JMenuItem("Project");
-		item1 = new JMenuItem("Open");
-		item2 = new JMenuItem("Save(S)");
-		item3 = new JMenuItem("Save as");
-		item4 = new JMenuItem("Page settings");
-		item5 = new JMenuItem("Print");
-		item6 = new JMenuItem("Exit");
-
-		jta = new JTextArea();
-
-		build.add(file);
-		build.add(project);
-
-		menu1.add(build);
-		menu1.add(item1);
-		menu1.add(item2);
-		menu1.add(item3);
-		menu1.addSeparator();
-		menu1.add(item4);
-		menu1.add(item5);
-		menu1.add(item6);
-
-		jmb.add(menu1);
-		jmb.add(menu2);
-		jmb.add(menu3);
-		jmb.add(menu4);
-		jmb.add(menu5);
-		frame.setJMenuBar(jmb);
-	}
 }
