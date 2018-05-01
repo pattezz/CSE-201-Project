@@ -140,7 +140,7 @@ public class UIV4 extends JFrame implements ActionListener {
 		}
 		if (e.getActionCommand().equals("Search")) {
 			
-			
+			SearchMethod();
 		}
 		if (e.getActionCommand().equals("Close")) {
 			frame.setVisible(false);
@@ -150,6 +150,42 @@ public class UIV4 extends JFrame implements ActionListener {
 	}
 
 	
+
+	private void SearchMethod() {
+		JFrame SearchFrame = new JFrame("Search");
+		SearchFrame.setSize(500,500);
+		SearchFrame.setLayout(new FlowLayout());
+		SearchFrame.setVisible(true);
+		
+		JPanel WebS = new JPanel();
+		JButton WebSearch = new JButton("WebSearch");
+		WebSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand().equals("WebSearch")) {
+					
+				}
+			}
+		
+		});
+		WebS.add(WebSearch);
+		
+		JPanel Prev = new JPanel();
+		JButton Previousaligh = new JButton("Previos align");
+		Previousaligh.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand().equals("Previos align")) {
+					
+				}
+				
+			}
+			
+		});
+		Prev.add(Previousaligh);
+		SearchFrame.add(WebS);
+		SearchFrame.add(Prev);
+	}
 
 	private void MuliMethod() {
 		JFrame MuliFrame = new JFrame("Mulisequence");
@@ -211,34 +247,6 @@ public class UIV4 extends JFrame implements ActionListener {
 		
 		ProtienFrame.add(Sequence);
 
-		JButton submit = new JButton("Submit");
-		// submit.setForeground(Color.black);
-		// submit.setBackground(new Color(175, 175, 175));
-		ProtienFrame.add(submit);
-
-		JButton score = new JButton("Scoring matrix");
-		ProtienFrame.add(score);
-		score.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("scoring matrix")) {
-					try {
-						JLabel score = new JLabel(scoreMatrixi());
-					} catch (InvalidApplicationException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			}
-
-			private String scoreMatrixi() throws InvalidApplicationException {
-				String a = ProtiesInput.getText();
-				String b = ProtiesInput2.getText();
-				diffMatrix test = new diffMatrix();
-				System.out.println(test.calculate80(a, b));
-				return test.calculate80(a, b);
-
-			}
-		});
 
 		JButton Return = new JButton("Return");
 		// Return.setBackground(new Color(0, 65, 32));
@@ -249,6 +257,89 @@ public class UIV4 extends JFrame implements ActionListener {
 					frame.setVisible(true);
 					ProtienFrame.setVisible(false);
 				}
+			}
+		});
+		ProtienFrame.add(Return);
+		
+		JButton score80 = new JButton("Blosum80matrix score");
+		ProtienFrame.add(score80);
+		JButton score62 = new JButton("Blosum62matrix score");
+		ProtienFrame.add(score62);
+		score80.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand().equals("Blosum80matrix score")) {
+					try {
+						JLabel score = new JLabel(scoreMatrix80());
+						JFrame score80 = new JFrame("Blosum80 score");
+						score80.setSize(200, 200);
+						score80.setLocation(300, 300);
+						score80.setLayout(new FlowLayout());
+						score80.setVisible(true);
+						score80.add(score);
+
+						JButton close = new JButton("Close");
+						score80.add(close);
+						close.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								if (e.getActionCommand().equals("Close")) {
+									score80.setVisible(false);
+									score80.dispose();
+
+								}
+							}
+						});
+					} catch (InvalidApplicationException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+
+			private String scoreMatrix80() throws InvalidApplicationException {
+				String a = ProtiesInput.getText();
+				String b = ProtiesInput2.getText();
+				diffMatrix test = new diffMatrix();
+				System.out.println(test.calculate80(a, b));
+				return test.calculate80(a, b);
+
+			}
+		});
+		score62.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand().equals("Blosum62matrix score")) {
+					try {
+						JLabel score = new JLabel(scoreMatrix62());
+						JFrame score62 = new JFrame("Blosum62 score");
+						score62.setSize(200, 200);
+						score62.setLocation(300, 300);
+						score62.setLayout(new FlowLayout());
+						score62.setVisible(true);
+						score62.add(score);
+						JButton close = new JButton("Close");
+						score62.add(close);
+						close.addActionListener(new ActionListener() {
+
+							public void actionPerformed(ActionEvent e) {
+								if (e.getActionCommand().equals("Close")) {
+									score62.setVisible(false);
+									score62.dispose();
+								}
+							}
+						});
+					} catch (InvalidApplicationException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+
+			private String scoreMatrix62() throws InvalidApplicationException {
+				String a = ProtiesInput.getText();
+				String b = ProtiesInput2.getText();
+				diffMatrix test = new diffMatrix();
+				System.out.println(test.calculate62(a, b));
+				return test.calculate62(a, b);
+
 			}
 		});
 		ProtienFrame.add(Return);
@@ -317,87 +408,7 @@ public class UIV4 extends JFrame implements ActionListener {
 			}
 		});
 
-		JButton score80 = new JButton("Blosum80matrix score");
-		DNAFrame.add(score80);
-		JButton score62 = new JButton("Blosum62matrix score");
-		DNAFrame.add(score62);
-		score80.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("Blosum80matrix score")) {
-					try {
-						JLabel score = new JLabel(scoreMatrix80());
-						JFrame score80 = new JFrame("Blosum80 score");
-						score80.setSize(200, 200);
-						score80.setLocation(300, 300);
-						score80.setLayout(new FlowLayout());
-						score80.setVisible(true);
-						score80.add(score);
-
-						JButton close = new JButton("Close");
-						score80.add(close);
-						close.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								if (e.getActionCommand().equals("Close")) {
-									score80.setVisible(false);
-									score80.dispose();
-
-								}
-							}
-						});
-					} catch (InvalidApplicationException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			}
-
-			private String scoreMatrix80() throws InvalidApplicationException {
-				String a = DNAInput.getText();
-				String b = DNAInput2.getText();
-				diffMatrix test = new diffMatrix();
-				System.out.println(test.calculate80(a, b));
-				return test.calculate80(a, b);
-
-			}
-		});
-		score62.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("Blosum62matrix score")) {
-					try {
-						JLabel score = new JLabel(scoreMatrix62());
-						JFrame score62 = new JFrame("Blosum62 score");
-						score62.setSize(200, 200);
-						score62.setLocation(300, 300);
-						score62.setLayout(new FlowLayout());
-						score62.setVisible(true);
-						score62.add(score);
-						JButton close = new JButton("Close");
-						score62.add(close);
-						close.addActionListener(new ActionListener() {
-
-							public void actionPerformed(ActionEvent e) {
-								if (e.getActionCommand().equals("Close")) {
-									score62.setVisible(false);
-									score62.dispose();
-								}
-							}
-						});
-					} catch (InvalidApplicationException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			}
-
-			private String scoreMatrix62() throws InvalidApplicationException {
-				String a = DNAInput.getText();
-				String b = DNAInput2.getText();
-				diffMatrix test = new diffMatrix();
-				System.out.println(test.calculate62(a, b));
-				return test.calculate62(a, b);
-
-			}
-		});
+		
 
 		JButton Graph = new JButton("Graph");
 		Graph.addActionListener(new ActionListener() {
@@ -442,7 +453,6 @@ public class UIV4 extends JFrame implements ActionListener {
 					
 					Alignable savedAlignable = new Alignable();
 					savedAlignable.align(a, b);
-					mem.add(savedAlignable);
 					mem.export(savedAlignable);
 				}
 			}
@@ -479,112 +489,17 @@ public class UIV4 extends JFrame implements ActionListener {
 		// Container conPaneD = getContentPane();
 
 		JLabel inputR = new JLabel("RNA Sequence 1 ");
-		// inputR.setForeground(Color.white);
 		RNAFrame.add(inputR);
 		JTextField RNAInput = new JTextField(13);
-		// RNAInput.setForeground(Color.black);
-
 		RNAFrame.add(RNAInput);
 
 
 		JLabel inputR2 = new JLabel("RNA Sequence 2");
 		JTextField RNAInput2 = new JTextField(13);
-		// inputD2.setForeground(Color.white);
 		RNAFrame.add(inputR2);
-
-		// RNAInput2.setForeground(Color.black);
 		RNAFrame.add(RNAInput2);
-		// RNAFrame.add(inputR2);
+		
 
-		JButton score80 = new JButton("Blosum80matrix score");
-		RNAFrame.add(score80);
-		JButton score62 = new JButton("Blosum62matrix score");
-		RNAFrame.add(score62);
-		score80.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("Blosum80matrix score")) {
-					try {
-						JLabel score = new JLabel(scoreMatrix80());
-						JFrame score80 = new JFrame("Blosum80 score");
-						score80.setSize(200, 200);
-						score80.setLocation(300, 300);
-						score80.setLayout(new FlowLayout());
-						score80.setVisible(true);
-						score80.add(score);
-
-						JButton close = new JButton("Close");
-						score80.add(close);
-						close.addActionListener(new ActionListener() {
-
-							public void actionPerformed(ActionEvent e) {
-								if (e.getActionCommand().equals("Close")) {
-									score80.setVisible(false);
-
-								}
-
-							}
-
-						});
-
-					} catch (InvalidApplicationException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-			}
-
-			private String scoreMatrix80() throws InvalidApplicationException {
-				String a = RNAInput.getText();
-				String b = RNAInput2.getText();
-				diffMatrix test = new diffMatrix();
-				System.out.println(test.calculate80(a, b));
-				return test.calculate80(a, b);
-
-			}
-		});
-		score62.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("Blosum62matrix score")) {
-					try {
-						JLabel score = new JLabel(scoreMatrix62());
-						JFrame score62 = new JFrame("Blosum62 score");
-						score62.setSize(200, 200);
-						score62.setLocation(300, 300);
-						score62.setLayout(new FlowLayout());
-						score62.setVisible(true);
-						score62.add(score);
-						JButton close = new JButton("Close");
-						score62.add(close);
-						close.addActionListener(new ActionListener() {
-
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								if (e.getActionCommand().equals("Close")) {
-									score62.setVisible(false);
-
-								}
-
-							}
-
-						});
-
-					} catch (InvalidApplicationException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-
-			}
-
-			private String scoreMatrix62() throws InvalidApplicationException {
-				String a = RNAInput.getText();
-				String b = RNAInput2.getText();
-				diffMatrix test = new diffMatrix();
-				System.out.println(test.calculate62(a, b));
-				return test.calculate62(a, b);
-
-			}
-		});
 		JButton Align = new JButton("Align");
 		Align.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
