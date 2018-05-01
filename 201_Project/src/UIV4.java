@@ -89,7 +89,7 @@ public class UIV4 extends JFrame implements ActionListener {
 		// mulisequence
 		JPanel muliPanel = new JPanel();
 		muliPanel.setLayout(new BoxLayout(muliPanel, BoxLayout.Y_AXIS));
-		JButton muliSequence = new JButton("Mulisequence");
+		JButton muliSequence = new JButton("Mutisequence");
 		muliSequence.setFont(new Font("Arial", Font.PLAIN, 20));
 		muliSequence.addActionListener(this);
 		muliPanel.add(muliSequence);
@@ -139,9 +139,9 @@ public class UIV4 extends JFrame implements ActionListener {
 			frame.setVisible(false);
 			Protienmethod();
 		}
-		if (e.getActionCommand().equals("Mulisequence")) {
+		if (e.getActionCommand().equals("Mutisequence")) {
 			frame.setVisible(false);
-			MuliMethod();
+			MutiMethod();
 		}
 		if (e.getActionCommand().equals("Search")) {
 			
@@ -242,24 +242,24 @@ public class UIV4 extends JFrame implements ActionListener {
 		});
 	}
 
-	private void MuliMethod() {
-		JFrame MuliFrame = new JFrame("Mulisequence");
-		//MuliFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		MuliFrame.setSize(500, 500);
-		MuliFrame.setLayout(new FlowLayout());
-		MuliFrame.setVisible(true);
+	private void MutiMethod() {
+		JFrame MutiFrame = new JFrame("Mutisequence");
+		//MutiFrame.getContentPane().setBackground(new Color(0, 65, 32));
+		MutiFrame.setSize(500, 500);
+		MutiFrame.setLayout(new FlowLayout());
+		MutiFrame.setVisible(true);
 
-		JLabel inputM = new JLabel("Mulisequence");
+		JLabel inputM = new JLabel("Mutisequence");
 		//inputM.setForeground(Color.white);
-		MuliFrame.add(inputM);
+		MutiFrame.add(inputM);
 		TextField ProtiesInput = new TextField(100);
-		MuliFrame.add(ProtiesInput);
+		MutiFrame.add(ProtiesInput);
 
 		JButton add = new JButton("Add");
 		//add.setForeground(Color.black);
 		//add.setBackground(new Color(175, 175, 175));
 		add.addActionListener(this);
-		MuliFrame.add(add);
+		MutiFrame.add(add);
 
 		JButton Return = new JButton("Return");
 		//Return.setBackground(new Color(0, 65, 32));
@@ -268,11 +268,11 @@ public class UIV4 extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
 					frame.setVisible(true);
-					MuliFrame.setVisible(false);
+					MutiFrame.setVisible(false);
 				}
 			}
 		});
-		MuliFrame.add(Return);
+		MutiFrame.add(Return);
 
 	}
 
