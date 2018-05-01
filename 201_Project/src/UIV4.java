@@ -12,12 +12,10 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -29,7 +27,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	}
 
 	public UIV4() {
-		frame.setSize(500, 500);
+		frame.setSize(400, 300);
 		frame.setTitle("Bioinformatic Toolkit");
 		//frame.getContentPane().setBackground(new Color(0, 65, 32));
 		JPanel panelDNA = new JPanel();
@@ -144,6 +142,7 @@ public class UIV4 extends JFrame implements ActionListener {
 		}
 		if (e.getActionCommand().equals("Close")) {
 			frame.setVisible(false);
+			System.exit(0);
 			
 		}
 
@@ -153,8 +152,8 @@ public class UIV4 extends JFrame implements ActionListener {
 
 	private void SearchMethod() {
 		JFrame SearchFrame = new JFrame("Search");
-		SearchFrame.setSize(500,500);
-		SearchFrame.setLayout(new FlowLayout());
+		SearchFrame.setSize(400,300);
+		SearchFrame.setLayout(new GridLayout(2, 1));
 		SearchFrame.setVisible(true);
 		
 		JPanel WebS = new JPanel();
@@ -182,9 +181,22 @@ public class UIV4 extends JFrame implements ActionListener {
 			}
 			
 		});
+		JPanel re = new JPanel();
+		re.setLayout(new FlowLayout());
+		JButton Return = new JButton("Return");
+		Return.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand().equals("Return")) {
+					frame.setVisible(true);
+					SearchFrame.setVisible(false);
+				}
+			}
+		});
+		re.add(Return);
 		Prev.add(Previousaligh);
 		SearchFrame.add(WebS);
 		SearchFrame.add(Prev);
+		SearchFrame.add(re);
 	}
 
 	private void MuliMethod() {
@@ -224,7 +236,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	private void Protienmethod() {
 		JFrame ProtienFrame = new JFrame("Protien");
 		// ProtienFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		ProtienFrame.setSize(580, 580);
+		ProtienFrame.setSize(500, 150);
 		ProtienFrame.setLayout(new FlowLayout());
 		ProtienFrame.setVisible(true);
 
@@ -247,7 +259,11 @@ public class UIV4 extends JFrame implements ActionListener {
 		
 		ProtienFrame.add(Sequence);
 
-
+		JPanel ButtonG = new JPanel();
+		ButtonG.setLayout(new FlowLayout());
+		
+		
+		JPanel re = new JPanel();
 		JButton Return = new JButton("Return");
 		// Return.setBackground(new Color(0, 65, 32));
 		// Return.setForeground(Color.black);
@@ -259,12 +275,12 @@ public class UIV4 extends JFrame implements ActionListener {
 				}
 			}
 		});
-		ProtienFrame.add(Return);
+		re.add(Return);
 		
 		JButton score80 = new JButton("Blosum80matrix score");
-		ProtienFrame.add(score80);
+		ButtonG.add(score80);
 		JButton score62 = new JButton("Blosum62matrix score");
-		ProtienFrame.add(score62);
+		ButtonG.add(score62);
 		score80.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Blosum80matrix score")) {
@@ -342,14 +358,15 @@ public class UIV4 extends JFrame implements ActionListener {
 
 			}
 		});
-		ProtienFrame.add(Return);
+		ProtienFrame.add(ButtonG);
+		ProtienFrame.add(re);
 		ProtienFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public void DNAmethod() {
 		JFrame DNAFrame = new JFrame("DNA");
 		// DNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		DNAFrame.setSize(500, 500);
+		DNAFrame.setSize(500, 150);
 		DNAFrame.setLayout(new FlowLayout());
 		DNAFrame.setVisible(true);
 		// DNAFrame.getContentPane();
@@ -417,11 +434,11 @@ public class UIV4 extends JFrame implements ActionListener {
 					String a = DNAInput.getText();
 					String b = DNAInput2.getText();
 					Frame f = new Frame();
-					if (e.getActionCommand().equals("Graph")) {
-						f.s.graph(a, b);
-					}	
+						f.s.graph(a, b);	
+						JPanel clo = new JPanel();
 						JButton close = new JButton("Close");
-						f.add(close);
+						clo.add(close);
+						f.add(clo);
 						close.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
@@ -440,7 +457,40 @@ public class UIV4 extends JFrame implements ActionListener {
 		Setting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Setting")) {
-					System.out.println("1");
+					JFrame set = new JFrame("Setting");
+					set.setSize(300, 150);
+					set.setLocation(300, 300);
+					set.setLayout(new FlowLayout());
+					set.setVisible(true);
+					
+					JPanel setG = new JPanel();
+					setG.setLayout(new GridLayout(3, 2));
+					JLabel gap = new JLabel("Gap");
+					setG.add(gap);
+					TextField gapInput = new TextField(6);
+					setG.add(gapInput);
+					
+					JLabel match = new JLabel("Match");
+					setG.add(match);
+					TextField matchInput = new TextField(6);
+					setG.add(matchInput);
+					
+					JLabel misMatch = new JLabel("Mismatch");
+					setG.add(misMatch);
+					TextField misMatchInput = new TextField(13);
+					setG.add(misMatchInput);
+					set.add(setG);
+					
+					JPanel YoN = new JPanel();
+					YoN.setLayout(new FlowLayout());
+					JButton Yes = new JButton("Yes");
+					
+					JButton No = new JButton("No");
+					
+					YoN.add(Yes);
+					YoN.add(No);
+					set.add(YoN);
+					
 				}
 			}
 		});
@@ -482,7 +532,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	public void RNAmethod() {
 		JFrame RNAFrame = new JFrame("RNA Align");
 		// RNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		RNAFrame.setSize(500, 500);
+		RNAFrame.setSize(500, 150);
 		RNAFrame.setLayout(new FlowLayout());
 		RNAFrame.setVisible(true);
 		// DNAFrame.getContentPane();
@@ -540,31 +590,65 @@ public class UIV4 extends JFrame implements ActionListener {
 		JButton Graph = new JButton("Graph");
 		Graph.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String a = RNAInput.getText();
-				String b = RNAInput2.getText();
 				if (e.getActionCommand().equals("Graph")) {
+					String a = RNAInput.getText();
+					String b = RNAInput2.getText();
 					Frame f = new Frame();
-					f.s.graph(a, b);
-					JButton close = new JButton("Close");
-					close.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							if (e.getActionCommand().equals("Close")) {
-								f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+						f.s.graph(a, b);	
+						JPanel clo = new JPanel();
+						JButton close = new JButton("Close");
+						clo.add(close);
+						f.add(clo);
+						close.addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								if (e.getActionCommand().equals("Close")) {
+									f.dispose();
+									f.setVisible(false);
+									
+								}
 							}
-
-						}
-
-					});
-
-				}
+						});
+					}
+				
 			}
 		});
 		JButton Setting = new JButton("Setting");
 		Setting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Setting")) {
-					System.out.println("1");
+					JFrame set = new JFrame("Setting");
+					set.setSize(300, 150);
+					set.setLocation(300, 300);
+					set.setLayout(new FlowLayout());
+					set.setVisible(true);
+					
+					JPanel setG = new JPanel();
+					setG.setLayout(new GridLayout(3, 2));
+					JLabel gap = new JLabel("Gap");
+					setG.add(gap);
+					TextField gapInput = new TextField(6);
+					setG.add(gapInput);
+					
+					JLabel match = new JLabel("Match");
+					setG.add(match);
+					TextField matchInput = new TextField(6);
+					setG.add(matchInput);
+					
+					JLabel misMatch = new JLabel("Mismatch");
+					setG.add(misMatch);
+					TextField misMatchInput = new TextField(13);
+					setG.add(misMatchInput);
+					set.add(setG);
+					
+					JPanel YoN = new JPanel();
+					YoN.setLayout(new FlowLayout());
+					JButton Yes = new JButton("Yes");
+					JButton No = new JButton("No");
+					
+					YoN.add(Yes);
+					YoN.add(No);
+					set.add(YoN);
 				}
 			}
 		});
@@ -577,7 +661,6 @@ public class UIV4 extends JFrame implements ActionListener {
 					
 					Alignable savedAlignable = new Alignable();
 					savedAlignable.align(a, b);
-					mem.add(savedAlignable);
 					mem.export(savedAlignable);
 				}
 			}
@@ -601,6 +684,4 @@ public class UIV4 extends JFrame implements ActionListener {
 		RNAFrame.add(Return);
 		RNAFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
-
 }
