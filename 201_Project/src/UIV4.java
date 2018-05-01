@@ -64,7 +64,7 @@ public class UIV4 extends JFrame implements ActionListener {
 		JPanel panelProtein = new JPanel();
 		// panelProtein.setBackground(new Color(0, 65, 32));
 
-		JButton Protein = new JButton("Protien");
+		JButton Protein = new JButton("Protein");
 		// Protein.setBackground(new Color(0, 65, 32));
 		// Protein.setForeground(Color.white);
 		// RNA.setPreferredSize(new Dimension(300, 100));
@@ -277,7 +277,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	}
 
 	private void Protienmethod() {
-		JFrame ProtienFrame = new JFrame("Protien");
+		JFrame ProtienFrame = new JFrame("Protein");
 		// ProtienFrame.getContentPane().setBackground(new Color(0, 65, 32));
 		ProtienFrame.setSize(500, 150);
 		ProtienFrame.setLayout(new FlowLayout());
@@ -286,14 +286,14 @@ public class UIV4 extends JFrame implements ActionListener {
 		
 		JPanel Sequence = new JPanel();
 		Sequence.setLayout(new GridLayout(2,2));
-		JLabel inputP = new JLabel("Protien Sequence 1");
+		JLabel inputP = new JLabel("Protein Sequence 1");
 		// inputP.setForeground(Color.white);
 		Sequence.add(inputP);
 		TextField ProtiesInput = new TextField(13);
 		Sequence.add(ProtiesInput);
 		// ProtiesInput.setForeground(Color.black);
 
-		JLabel inputP2 = new JLabel("Protien Sequence 2");
+		JLabel inputP2 = new JLabel("Protein Sequence 2");
 		// inputP2.setForeground(Color.white);
 		Sequence.add(inputP2);
 		TextField ProtiesInput2 = new TextField(13);
