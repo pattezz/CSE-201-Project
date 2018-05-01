@@ -3,9 +3,12 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 import javax.management.InvalidApplicationException;
 import javax.swing.BorderFactory;
@@ -18,6 +21,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+
+
 
 public class UIV4 extends JFrame implements ActionListener {
 	private JFrame frame = new JFrame();
@@ -152,38 +159,18 @@ public class UIV4 extends JFrame implements ActionListener {
 
 	private void SearchMethod() {
 		JFrame SearchFrame = new JFrame("Search");
-		SearchFrame.setSize(400,300);
-		SearchFrame.setLayout(new GridLayout(2, 1));
+		// DNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
+		SearchFrame.setSize(500, 500);
+		SearchFrame.setLayout(new FlowLayout());
 		SearchFrame.setVisible(true);
-		
-		JPanel WebS = new JPanel();
-		JButton WebSearch = new JButton("WebSearch");
-		WebSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("WebSearch")) {
-					
-				}
-			}
-		
-		});
-		WebS.add(WebSearch);
-		
-		JPanel Prev = new JPanel();
-		JButton Previousaligh = new JButton("Previos align");
-		Previousaligh.addActionListener(new ActionListener() {
+		// DNAFrame.getContentPane();
+		// Container conPaneD = getContentPane();
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("Previos align")) {
-					
-				}
-				
-			}
-			
-		});
-		JPanel re = new JPanel();
-		re.setLayout(new FlowLayout());
+		JLabel inputD = new JLabel("Accession Number");
+		JTextField searchable = new JTextField(13);
 		JButton Return = new JButton("Return");
+		// Return.setBackground(new Color(0, 65, 32));
+		// Return.setForeground(Color.white);
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
@@ -192,11 +179,67 @@ public class UIV4 extends JFrame implements ActionListener {
 				}
 			}
 		});
-		re.add(Return);
-		Prev.add(Previousaligh);
-		SearchFrame.add(WebS);
-		SearchFrame.add(Prev);
-		SearchFrame.add(re);
+		WebScrape wscrape= new WebScrape();
+		JButton ws = new JButton("Search NCBI");
+		ws.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = searchable.getText();
+				if (e.getActionCommand().equals("Search NCBI")) {
+					JFrame searcha = new JFrame("Alignment result");
+					JLabel seq = null;
+
+					searcha.setSize(500, 500);
+					searcha.setLocation(300, 300);
+					searcha.setLayout(new FlowLayout());
+					searcha.setVisible(true);
+					try {
+						searcha.add(new TextField(wscrape.getFASTA(searchable.getText())));
+					} catch (HeadlessException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (FailingHttpStatusCodeException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (MalformedURLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					
+					JButton close = new JButton("Close");
+					close.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if (e.getActionCommand().equals("Close")) {
+								searcha.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+							}
+
+						}
+
+					});
+
+				}
+			}
+		});
+		SearchFrame.add(searchable);
+		SearchFrame.add(inputD);
+		SearchFrame.add(ws);
+		SearchFrame.add(Return);
+		SearchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JPanel re = new JPanel();
+		re.setLayout(new FlowLayout());
+		JButton Return1 = new JButton("Return");
+		Return.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand().equals("Return")) {
+					frame.setVisible(true);
+					SearchFrame.setVisible(false);
+				}
+			}
+		});
 	}
 
 	private void MuliMethod() {
