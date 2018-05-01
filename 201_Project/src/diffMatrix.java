@@ -177,31 +177,35 @@ public class diffMatrix {
 	   public int get(char c) throws InvalidApplicationException {
 	    switch ((String.valueOf(c)).toUpperCase().charAt(0)) {
 	      case 'A': return 0 ;
-	      case 'R': return 1 ;
-	      case 'N': return 2 ;
+	      case 'B': return 1 ;
+	      case 'C': return 2 ;
 	      case 'D': return 3 ;
-	      case 'C': return 4 ;
-	      case 'Q': return 5 ;
-	      case 'E': return 6 ;
-	      case 'G': return 7 ;
-	      case 'H': return 8 ;
-	      case 'I': return 9 ;
-	      case 'L': return 10;
-	      case 'K': return 11;
+	      case 'E': return 4 ;
+	      case 'F': return 5 ;
+	      case 'G': return 6 ;
+	      case 'H': return 7 ;
+	      case 'I': return 8 ;
+	      case 'J': return 9 ;
+	      case 'K': return 10;
+	      case 'L': return 11;
 	      case 'M': return 12;
-	      case 'F': return 13;
-	      case 'P': return 14;
-	      case 'S': return 15;
-	      case 'T': return 16;
-	      case 'W': return 17;
-	      case 'Y': return 18;
-	      case 'V': return 19;
-	      case 'B': return 20;
-	      case 'Z': return 21;
-	      case 'X': return 22;
-	      case '-': return 23;
+	      case 'N': return 13;
+	      case 'O': return 14;
+	      case 'P': return 15;
+	      case 'Q': return 16;
+	      case 'R': return 17;
+	      case 'S': return 18;
+	      case 'T': return 19;
+	      case 'U': return 20;
+	      case 'V': return 21;
+	      case 'W': return 22;
+	      case 'X': return 23;
+	      case 'Y': return 24;
+	      case 'Z': return 25;
 	      default :
 	    	  throw new InvalidApplicationException(c);
 	    }
 	  }
 }
+
+   
