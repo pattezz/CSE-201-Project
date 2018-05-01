@@ -279,7 +279,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	private void Protienmethod() {
 		JFrame ProtienFrame = new JFrame("Protein");
 		// ProtienFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		ProtienFrame.setSize(500, 150);
+		ProtienFrame.setSize(500, 200);
 		ProtienFrame.setLayout(new FlowLayout());
 		ProtienFrame.setVisible(true);
 
