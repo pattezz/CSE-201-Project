@@ -135,7 +135,7 @@ public class UIV4 extends JFrame implements ActionListener {
 			frame.setVisible(false);
 			DNAmethod();
 		}
-		if (e.getActionCommand().equals("Protien")) {
+		if (e.getActionCommand().equals("Protein")) {
 			frame.setVisible(false);
 			Protienmethod();
 		}
