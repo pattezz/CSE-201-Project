@@ -449,7 +449,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	public void DNAmethod() {
 		JFrame DNAFrame = new JFrame("DNA");
 		// DNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		DNAFrame.setSize(500, 150);
+		DNAFrame.setSize(530, 150);
 		DNAFrame.setLayout(new FlowLayout());
 		DNAFrame.setVisible(true);
 		// DNAFrame.getContentPane();
@@ -615,7 +615,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	public void RNAmethod() {
 		JFrame RNAFrame = new JFrame("RNA Align");
 		// RNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		RNAFrame.setSize(500, 150);
+		RNAFrame.setSize(530, 150);
 		RNAFrame.setLayout(new FlowLayout());
 		RNAFrame.setVisible(true);
 		// DNAFrame.getContentPane();
