@@ -432,6 +432,18 @@ public class UIV4 extends JFrame implements ActionListener {
 					YoN.setLayout(new FlowLayout());
 					JButton Yes = new JButton("Yes");
 					JButton No = new JButton("No");
+					No.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							if(e.getActionCommand().equals("No")) {
+								set.setVisible(false);
+								set.dispose();
+							}
+							
+						}
+						
+					});
 					
 					YoN.add(Yes);
 					YoN.add(No);
@@ -569,6 +581,18 @@ public class UIV4 extends JFrame implements ActionListener {
 					JButton Yes = new JButton("Yes");
 					
 					JButton No = new JButton("No");
+					No.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							if(e.getActionCommand().equals("No")) {
+								set.setVisible(false);
+								set.dispose();
+							}
+							
+						}
+						
+					});
 					
 					YoN.add(Yes);
 					YoN.add(No);
@@ -728,6 +752,18 @@ public class UIV4 extends JFrame implements ActionListener {
 					YoN.setLayout(new FlowLayout());
 					JButton Yes = new JButton("Yes");
 					JButton No = new JButton("No");
+					No.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							if(e.getActionCommand().equals("No")) {
+								set.setVisible(false);
+								set.dispose();
+							}
+							
+						}
+						
+					});
 					
 					YoN.add(Yes);
 					YoN.add(No);
