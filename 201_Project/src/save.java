@@ -34,20 +34,22 @@ public class save {
 	public void export(Alignable a) {
 		try {
 			PrintWriter out = new PrintWriter("output.txt");
-			out.println(a.alignedSequence);
+			out.println(a.getAlignedSequence());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		}
+	public Alignable Search(String s) {
+		Node temp = this.head;
+		while(temp.next!= null) {
+			if(s.equals(temp.data.getSeq1())|| s.equals(temp.data.getSeq2())) return temp.data;
+			temp = temp.next;
+		}
+		return null;
 	}
 		
-	class Node {
-		private Alignable data;
-		Node next;	
-		Node(Alignable newEntry) {
-			this.data = newEntry;
-		}
-}
+
 }
 

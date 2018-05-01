@@ -1,20 +1,31 @@
 
 	public class Alignable {
-		private static  String alignedSequence;
+		private String alignedSequence;
+		private static String seq1;
+		private static String seq2;
+		public String getAlignedSequence() {
+			return alignedSequence;
+		}
+		public static void setAlignedSequence(String alignedSequence) {
+			alignedSequence = alignedSequence;
+		}
 		private static int[][] matrix;
 		public Alignable() {
-			alignedSequence= "";
-			
+			this.setAlignedSequence("");;
+			seq1="";
+			seq2="";
 			
 		}
-		public static void align(String string1, String string2) {
-			 align(string1, string2, -2,1,-1);
+		public static String align(String string1, String string2) {
+			return align(string1, string2, -2,1,-1);
 		}
 		public static String align(String string11,String string2, int gap1, int match1, int mismatch1) {
 			int gap=gap1, match= match1, mismatch=  mismatch1;
 			int scorevert, scorehor, scorediag;
 			String string1= string11;
 			String output1 = "", output2="";
+			seq1=string11;
+			seq2=string2;
 			int[][] scoreMatrix= new int[string1.length()][string2.length()];
 			char[][] directionMatrix = new char[string1.length()][string2.length()];
 			for(int i =0; i<string1.length();i++) {
@@ -85,11 +96,23 @@
 				output1=a1+output1;
 				output2=a2+output2;
 			}
-			alignedSequence= output1+"\n"+output2;
+			setAlignedSequence(output1+"\n"+output2);
 			matrix =scoreMatrix;
 //			System.out.println(output1+"\n"+output2);
 			return output1+"\n"+output2;
 	}
+		public String getSeq1() {
+			return seq1;
+		}
+		public void setSeq1(String seq1) {
+			this.seq1 = seq1;
+		}
+		public String getSeq2() {
+			return seq2;
+		}
+		public void setSeq2(String seq2) {
+			this.seq2 = seq2;
+		}
 		public boolean equals(Alignable a) {
 			if(a.alignedSequence.equals(this.alignedSequence)) {
 				return true;

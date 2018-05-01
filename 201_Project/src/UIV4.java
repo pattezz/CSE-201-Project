@@ -3,7 +3,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -187,16 +186,8 @@ public class UIV4 extends JFrame implements ActionListener {
 				if (e.getActionCommand().equals("Search NCBI")) {
 					JFrame searcha = new JFrame("Alignment result");
 					JLabel seq = null;
-
-					searcha.setSize(500, 500);
-					searcha.setLocation(300, 300);
-					searcha.setLayout(new FlowLayout());
-					searcha.setVisible(true);
 					try {
-						searcha.add(new TextField(wscrape.getFASTA(searchable.getText())));
-					} catch (HeadlessException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						seq = new JLabel(wscrape.getFASTA(searchable.getText()));
 					} catch (FailingHttpStatusCodeException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -207,8 +198,14 @@ public class UIV4 extends JFrame implements ActionListener {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+					searcha.setSize(500, 500);
+					searcha.setLocation(300, 300);
+					searcha.setLayout(new FlowLayout());
+					searcha.setVisible(true);
+					searcha.add(seq);
 					
 					
+
 					JButton close = new JButton("Close");
 					close.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
@@ -231,6 +228,18 @@ public class UIV4 extends JFrame implements ActionListener {
 		SearchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel re = new JPanel();
 		re.setLayout(new FlowLayout());
+		
+		JButton searchAlign= new JButton("Search Alignments ");
+		searchAlign.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+				
+				
+			}
+		});
+		SearchFrame.add(searchAlign);
 		JButton Return1 = new JButton("Return");
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -546,7 +555,7 @@ public class UIV4 extends JFrame implements ActionListener {
 					
 					Alignable savedAlignable = new Alignable();
 					savedAlignable.align(a, b);
-					mem.export(savedAlignable);
+					mem.add(savedAlignable);
 				}
 			}
 		});
