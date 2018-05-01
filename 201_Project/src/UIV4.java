@@ -449,7 +449,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	public void DNAmethod() {
 		JFrame DNAFrame = new JFrame("DNA");
 		// DNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		DNAFrame.setSize(530, 150);
+		DNAFrame.setSize(510, 150);
 		DNAFrame.setLayout(new FlowLayout());
 		DNAFrame.setVisible(true);
 		// DNAFrame.getContentPane();
