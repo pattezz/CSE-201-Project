@@ -20,6 +20,7 @@
 			return align(string1, string2, -2,1,-1);
 		}
 		public static String align(String string11,String string2, int gap1, int match1, int mismatch1) {
+
 			int gap=gap1, match= match1, mismatch=  mismatch1;
 			int scorevert, scorehor, scorediag;
 			String string1= string11;
@@ -28,6 +29,7 @@
 			seq2=string2;
 			int[][] scoreMatrix= new int[string1.length()][string2.length()];
 			char[][] directionMatrix = new char[string1.length()][string2.length()];
+			if(string1.equals(string2))return string1+"\n"+string2;
 			for(int i =0; i<string1.length();i++) {
 				scoreMatrix[i][0]=0;
 			}

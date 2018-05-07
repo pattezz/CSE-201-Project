@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 import javax.management.InvalidApplicationException;
 import javax.swing.BorderFactory;
@@ -179,6 +180,27 @@ public class UIV4 extends JFrame implements ActionListener {
 				}
 			}
 		});
+		
+		JButton searchSaved = new JButton("Search Saved Alignments");
+		searchSaved.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = searchable.getText();
+				if (e.getActionCommand().equals("Search Saved Alignments")) {
+					JFrame searcha = new JFrame("Seach Result result");
+					String result =mem.Search(s).getAlignable();
+					JLabel sl= new JLabel(result);
+					searcha.add(sl);
+					searcha.setSize(500, 500);
+					searcha.setLocation(300, 300);
+					searcha.setLayout(new FlowLayout());
+					searcha.setVisible(true);
+					//searcha.add(seq);
+				}
+			}
+		}
+	);
+		
+		
 		WebScrape wscrape= new WebScrape();
 		JButton ws = new JButton("Search NCBI");
 		ws.addActionListener(new ActionListener() {
@@ -224,11 +246,13 @@ public class UIV4 extends JFrame implements ActionListener {
 				}
 			}
 		});
+		
 		SearchFrame.add(searchable);
 		SearchFrame.add(inputD);
 		SearchFrame.add(ws);
 		SearchFrame.add(Return);
 		SearchFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		SearchFrame.add(searchSaved);
 		JPanel re = new JPanel();
 		re.setLayout(new FlowLayout());
 		JButton Return1 = new JButton("Return");
@@ -610,7 +634,8 @@ public class UIV4 extends JFrame implements ActionListener {
 					
 					Alignable savedAlignable = new Alignable();
 					savedAlignable.align(a, b);
-					mem.export(savedAlignable);
+					AlignSave a1 = new AlignSave(savedAlignable.align(a, b), a, b);
+					mem.add(a1);
 				}
 			}
 		});
@@ -780,7 +805,8 @@ public class UIV4 extends JFrame implements ActionListener {
 					
 					Alignable savedAlignable = new Alignable();
 					savedAlignable.align(a, b);
-					mem.export(savedAlignable);
+					AlignSave a1 = new AlignSave(savedAlignable.align(a, b), a, b);
+					mem.add(a1);
 				}
 			}
 		});

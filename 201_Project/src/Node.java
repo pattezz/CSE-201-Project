@@ -1,9 +1,10 @@
 
 	public class Node {
-		public Alignable data;
+		public AlignSave data;
 		Node next;	
-		public Node(Alignable newEntry) {
+		public Node(AlignSave newEntry) {
 			this.data = newEntry;
+			this.next= null;
 		}
 }
 
