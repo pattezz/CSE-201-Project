@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -37,25 +38,17 @@ public class UIV4 extends JFrame implements ActionListener {
 	public UIV4() {
 		frame.setSize(400, 300);
 		frame.setTitle("Bioinformatic Toolkit");
-		//frame.getContentPane().setBackground(new Color(0, 65, 32));
 		JPanel panelDNA = new JPanel();
-		// panelDNA.setBackground(new Color(0, 65, 32));
 
 		JButton DNA = new JButton("DNA");
-		// DNA.setBackground(new Color(0, 65, 32));
 		DNA.setFont(new Font("Arial", Font.PLAIN, 20));
-		// DNA.setForeground(Color.white);
 		DNA.addActionListener(this);
 		panelDNA.setLayout(new GridLayout(1, 3));
 		panelDNA.add(DNA);
 
 		JPanel panelRNA = new JPanel();
-		// panelRNA.setBackground(new Color(0, 65, 32));
 
 		JButton RNA = new JButton("RNA");
-		// RNA.setBackground(new Color(0, 65, 32));
-		// RNA.setForeground(Color.white);
-		// RNA.setPreferredSize(new Dimension(300, 100));
 		RNA.setFont(new Font("Arial", Font.PLAIN, 20));
 		
 		RNA.addActionListener(this);
@@ -63,12 +56,8 @@ public class UIV4 extends JFrame implements ActionListener {
 		panelRNA.add(RNA);
 
 		JPanel panelProtein = new JPanel();
-		// panelProtein.setBackground(new Color(0, 65, 32));
 
 		JButton Protein = new JButton("Protein");
-		// Protein.setBackground(new Color(0, 65, 32));
-		// Protein.setForeground(Color.white);
-		// RNA.setPreferredSize(new Dimension(300, 100));
 		Protein.setFont(new Font("Arial", Font.PLAIN, 20));
 		Protein.addActionListener(this);
 		panelProtein.setLayout(new GridLayout(1, 3));
@@ -76,7 +65,6 @@ public class UIV4 extends JFrame implements ActionListener {
 
 		// sum panel
 		JPanel sumPanel = new JPanel();
-		// sumPanel.setBackground(new Color(0, 65, 32));
 		sumPanel.setLayout(new BoxLayout(sumPanel, BoxLayout.X_AXIS));
 		ButtonGroup DRPGroup = new ButtonGroup();
 		DRPGroup.add(DNA);
@@ -87,10 +75,10 @@ public class UIV4 extends JFrame implements ActionListener {
 		sumPanel.add(panelProtein);
 		sumPanel.setBorder(BorderFactory.createTitledBorder("DRP"));
 
-		// mulisequence
+		// multisequence
 		JPanel muliPanel = new JPanel();
 		muliPanel.setLayout(new BoxLayout(muliPanel, BoxLayout.Y_AXIS));
-		JButton muliSequence = new JButton("Mutisequence");
+		JButton muliSequence = new JButton("Multisequence");
 		muliSequence.setFont(new Font("Arial", Font.PLAIN, 20));
 		muliSequence.addActionListener(this);
 		muliPanel.add(muliSequence);
@@ -99,14 +87,19 @@ public class UIV4 extends JFrame implements ActionListener {
 		JButton SearchB = new JButton("Search");
 		SearchB.setFont(new Font("Arial", Font.PLAIN, 20));
 		SearchB.addActionListener(this);
-		// search.add(SearchB);
+		
 
 		JPanel Close = new JPanel();
-		Close.setLayout(new BoxLayout(Close, BoxLayout.Y_AXIS));
+		Close.setLayout(new FlowLayout());
 		JButton CloseB = new JButton("Close");
-		// CloseB.setFont(new Font("Arial", Font.PLAIN, 20));
 		CloseB.addActionListener(this);
+		
+		JButton help = new JButton("Help");
+		help.addActionListener(this);
+		Close.add(help);
 		Close.add(CloseB);
+		
+		
 
 		JPanel southPanel = new JPanel();
 		southPanel.setLayout(new FlowLayout());
@@ -140,23 +133,46 @@ public class UIV4 extends JFrame implements ActionListener {
 			frame.setVisible(false);
 			Protienmethod();
 		}
-		if (e.getActionCommand().equals("Mutisequence")) {
+		if (e.getActionCommand().equals("Multisequence")) {
 			frame.setVisible(false);
-			MutiMethod();
+			MultiMethod();
 		}
 		if (e.getActionCommand().equals("Search")) {
-			
 			SearchMethod();
 		}
 		if (e.getActionCommand().equals("Close")) {
 			frame.setVisible(false);
 			System.exit(0);
-			
+		}
+		if (e.getActionCommand().equals("Help")) {
+			HelpMethod();
 		}
 
 	}
 
-	
+	private void HelpMethod() {
+		JFrame Help = new JFrame("Help");
+		Help.setSize(600, 500);
+		Help.setLocation(450, 150);
+		Help.setLayout(new FlowLayout());
+		Help.setVisible(true);
+		
+		JTextArea He = new JTextArea();
+		JScrollPane jsp = new JScrollPane(He);
+		He.append(  "Align : Input two strings and you will get the Needleman Wunsch Alignment of the strings. \r\n" + 
+					"\r\n" + 
+					"Save: Saves the alignment of the two inputted strings. \r\n" + 
+					"\r\n" + 
+					"Graph: Creates a dot matrix graph of the relationship between the two inputted strings.\r\n" + 
+					"\r\n" + 
+					"Search NCBI: search the NCBI website for the FASTA sequence related to the accession number entered.\r\n" + 
+					"\r\n" + 
+					"Search Saved alignments: searches saved alignments for alignments where you used the entered sequence.\r\n" + 
+					"\r\n" +
+					"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\r\n"+
+					"");
+		Help.add(jsp);
+	}
 
 	private void SearchMethod() {
 		JFrame SearchFrame = new JFrame("Search");
@@ -262,24 +278,24 @@ public class UIV4 extends JFrame implements ActionListener {
 		});
 	}
 
-	private void MutiMethod() {
-		JFrame MutiFrame = new JFrame("Mutisequence");
+	private void MultiMethod() {
+		JFrame MultiFrame = new JFrame("Multisequence");
 		//MutiFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		MutiFrame.setSize(500, 500);
-		MutiFrame.setLayout(new FlowLayout());
-		MutiFrame.setVisible(true);
+		MultiFrame.setSize(500, 500);
+		MultiFrame.setLayout(new FlowLayout());
+		MultiFrame.setVisible(true);
 
-		JLabel inputM = new JLabel("Mutisequence");
+		JLabel inputM = new JLabel("Multisequence");
 		//inputM.setForeground(Color.white);
-		MutiFrame.add(inputM);
+		MultiFrame.add(inputM);
 		TextField ProtiesInput = new TextField(100);
-		MutiFrame.add(ProtiesInput);
+		MultiFrame.add(ProtiesInput);
 
 		JButton add = new JButton("Add");
 		//add.setForeground(Color.black);
 		//add.setBackground(new Color(175, 175, 175));
 		add.addActionListener(this);
-		MutiFrame.add(add);
+		MultiFrame.add(add);
 
 		JButton Return = new JButton("Return");
 		//Return.setBackground(new Color(0, 65, 32));
@@ -288,11 +304,11 @@ public class UIV4 extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
 					frame.setVisible(true);
-					MutiFrame.setVisible(false);
+					MultiFrame.setVisible(false);
 				}
 			}
 		});
-		MutiFrame.add(Return);
+		MultiFrame.add(Return);
 
 	}
 
@@ -314,12 +330,9 @@ public class UIV4 extends JFrame implements ActionListener {
 		// ProtiesInput.setForeground(Color.black);
 
 		JLabel inputP2 = new JLabel("Protein Sequence 2");
-		// inputP2.setForeground(Color.white);
 		Sequence.add(inputP2);
 		TextField ProtiesInput2 = new TextField(13);
 		Sequence.add(ProtiesInput2);
-		// ProtiesInput2.setForeground(Color.black);
-		
 		ProtienFrame.add(Sequence);
 		JPanel ButtonG = new JPanel();
 		ButtonG.setLayout(new FlowLayout());
@@ -327,8 +340,6 @@ public class UIV4 extends JFrame implements ActionListener {
 		
 		JPanel re = new JPanel();
 		JButton Return = new JButton("Return");
-		// Return.setBackground(new Color(0, 65, 32));
-		// Return.setForeground(Color.black);
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
@@ -367,7 +378,6 @@ public class UIV4 extends JFrame implements ActionListener {
 							}
 						});
 					} catch (InvalidApplicationException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -405,7 +415,6 @@ public class UIV4 extends JFrame implements ActionListener {
 							}
 						});
 					} catch (InvalidApplicationException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -452,7 +461,13 @@ public class UIV4 extends JFrame implements ActionListener {
 					YoN.setLayout(new FlowLayout());
 					JButton Yes = new JButton("Yes");
 					JButton No = new JButton("No");
-					
+					No.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if (e.getActionCommand().equals("No")) {
+								set.setVisible(false);
+							}
+						}
+					});
 					YoN.add(Yes);
 					YoN.add(No);
 					set.add(YoN);
@@ -468,29 +483,21 @@ public class UIV4 extends JFrame implements ActionListener {
 
 	public void DNAmethod() {
 		JFrame DNAFrame = new JFrame("DNA");
-		// DNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
 		DNAFrame.setSize(510, 150);
 		DNAFrame.setLayout(new FlowLayout());
 		DNAFrame.setVisible(true);
-		// DNAFrame.getContentPane();
-		// Container conPaneD = getContentPane();
 
 		JLabel inputD = new JLabel("DNA Sequence 1");
-		// inputD.setForeground(Color.white);
 		DNAFrame.add(inputD);
 
 		TextField DNAInput = new TextField(13);
-		// DNAInput.setForeground(Color.black);
 		DNAFrame.add(DNAInput);
 
 		JLabel input2 = new JLabel("DNA Sequence 2");
 		DNAFrame.add(input2);
-		// inputD2.setForeground(Color.white);
 
 		TextField DNAInput2 = new TextField(13);
-		// DNAInput2.setForeground(Color.black);
 		DNAFrame.add(DNAInput2);
-		// RNAFrame.add(inputR2);
 
 		JButton Align = new JButton("Align");
 		Align.addActionListener(new ActionListener() {
@@ -503,6 +510,7 @@ public class UIV4 extends JFrame implements ActionListener {
 					align1.setLocation(300, 300);
 					align1.setLayout(new FlowLayout());
 					align1.setVisible(true);
+					
 					align1.add(align);
 
 					JButton close = new JButton("Close");
@@ -522,7 +530,6 @@ public class UIV4 extends JFrame implements ActionListener {
 				String a = DNAInput.getText();
 				String b = DNAInput2.getText();
 				Alignable s = new Alignable();
-				//System.out.println(Alignable.align(a, b));
 				return Alignable.align(a, b);
 
 			}
@@ -590,7 +597,13 @@ public class UIV4 extends JFrame implements ActionListener {
 					JButton Yes = new JButton("Yes");
 					
 					JButton No = new JButton("No");
-					
+					No.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if (e.getActionCommand().equals("No")) {
+								set.setVisible(false);
+							}
+						}
+					});
 					YoN.add(Yes);
 					YoN.add(No);
 					set.add(YoN);
@@ -614,8 +627,6 @@ public class UIV4 extends JFrame implements ActionListener {
 		});
 
 		JButton Return = new JButton("Return");
-		// Return.setBackground(new Color(0, 65, 32));
-		// Return.setForeground(Color.white);
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
@@ -636,12 +647,10 @@ public class UIV4 extends JFrame implements ActionListener {
 
 	public void RNAmethod() {
 		JFrame RNAFrame = new JFrame("RNA Align");
-		// RNAFrame.getContentPane().setBackground(new Color(0, 65, 32));
 		RNAFrame.setSize(530, 150);
 		RNAFrame.setLayout(new FlowLayout());
 		RNAFrame.setVisible(true);
-		// DNAFrame.getContentPane();
-		// Container conPaneD = getContentPane();
+		
 
 		JLabel inputR = new JLabel("RNA Sequence 1 ");
 		RNAFrame.add(inputR);
@@ -660,8 +669,8 @@ public class UIV4 extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Align")) {
 
+					JTextArea align = new JTextArea();
 					align.setText(alignMethod());
-					JFrame align1 = new JFrame("Alignment result");
 					JFrame align1 = new JFrame("Alignment result");
 					align1.setSize(500, 500);
 					align1.setLocation(300, 300);
@@ -751,6 +760,14 @@ public class UIV4 extends JFrame implements ActionListener {
 					YoN.setLayout(new FlowLayout());
 					JButton Yes = new JButton("Yes");
 					JButton No = new JButton("No");
+					No.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							if (e.getActionCommand().equals("No")) {
+								set.setVisible(false);
+							}
+						}
+					});
+							
 					
 					YoN.add(Yes);
 					YoN.add(No);
@@ -774,8 +791,6 @@ public class UIV4 extends JFrame implements ActionListener {
 		});
 
 		JButton Return = new JButton("Return");
-		// Return.setBackground(new Color(0, 65, 32));
-		// Return.setForeground(Color.white);
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
