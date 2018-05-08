@@ -165,11 +165,12 @@ public class UIV4 extends JFrame implements ActionListener {
 					"\r\n" + 
 					"Graph: Creates a dot matrix graph of the relationship between the two inputted strings.\r\n" + 
 					"\r\n" + 
-					"Search NCBI: search the NCBI website for the FASTA sequence related to the accession number entered.\r\n" + 
-					"\r\n" + 
-					"Search Saved alignments: searches saved alignments for alignments where you used the entered sequence.\r\n" + 
+					"Setting: Allows you to change the criteria by which the best alignment is found.\r\n"+
 					"\r\n" +
-					"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.\r\n"+
+					"Search NCBI: Search the NCBI website for the FASTA sequence related to the accession number entered.\r\n" + 
+					"\r\n" + 
+					"Search Saved alignments: Searches saved alignments for alignments where you used the entered sequence.\r\n" + 
+					"\r\n" +
 					"");
 		Help.add(jsp);
 	}
@@ -279,27 +280,53 @@ public class UIV4 extends JFrame implements ActionListener {
 	}
 
 	private void MultiMethod() {
+		MultiSeq multiSeq = new MultiSeq();
 		JFrame MultiFrame = new JFrame("Multisequence");
-		//MutiFrame.getContentPane().setBackground(new Color(0, 65, 32));
-		MultiFrame.setSize(500, 500);
+		MultiFrame.setSize(500, 200);
 		MultiFrame.setLayout(new FlowLayout());
 		MultiFrame.setVisible(true);
 
 		JLabel inputM = new JLabel("Multisequence");
-		//inputM.setForeground(Color.white);
 		MultiFrame.add(inputM);
-		TextField ProtiesInput = new TextField(100);
+		TextField ProtiesInput = new TextField(50);
 		MultiFrame.add(ProtiesInput);
 
 		JButton add = new JButton("Add");
-		//add.setForeground(Color.black);
-		//add.setBackground(new Color(175, 175, 175));
+		add.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				multiSeq.add(ProtiesInput.getText());
+				ProtiesInput.setText("");
+							}
+						});
+		
+		JButton alignButton = new JButton("Align");
+		alignButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		JTextArea align = new JTextArea(multiSeq.align());
+		JFrame align1 = new JFrame("Alignment result");
+		align1.setSize(500, 500);
+		align1.setLocation(300, 300);
+		align1.setLayout(new FlowLayout());
+		align1.setVisible(true);
+		align1.add(align);		
+		JButton close = new JButton("Close");
+		align1.add(close);
+		close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getActionCommand().equals("Close")) {
+					align1.setVisible(false);
+					multiSeq.clear();
+
+				}
+			}
+		});
+			}
+		});
 		add.addActionListener(this);
 		MultiFrame.add(add);
+		MultiFrame.add(alignButton);
 
 		JButton Return = new JButton("Return");
-		//Return.setBackground(new Color(0, 65, 32));
-		//Return.setForeground(Color.BLACK);
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Return")) {
@@ -309,7 +336,6 @@ public class UIV4 extends JFrame implements ActionListener {
 			}
 		});
 		MultiFrame.add(Return);
-
 	}
 
 	private void Protienmethod() {
