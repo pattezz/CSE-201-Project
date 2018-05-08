@@ -660,8 +660,8 @@ public class UIV4 extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("Align")) {
 
-					JLabel align = new JLabel(alignMethod(),
-							SwingConstants.CENTER);
+					align.setText(alignMethod());
+					JFrame align1 = new JFrame("Alignment result");
 					JFrame align1 = new JFrame("Alignment result");
 					align1.setSize(500, 500);
 					align1.setLocation(300, 300);
