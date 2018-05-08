@@ -482,6 +482,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	}
 
 	public void DNAmethod() {
+		Settings setingObject = new Settings(-2, 1, -1);
 		JFrame DNAFrame = new JFrame("DNA");
 		DNAFrame.setSize(510, 150);
 		DNAFrame.setLayout(new FlowLayout());
@@ -595,7 +596,19 @@ public class UIV4 extends JFrame implements ActionListener {
 					JPanel YoN = new JPanel();
 					YoN.setLayout(new FlowLayout());
 					JButton Yes = new JButton("Yes");
-					
+					Yes.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							if(e.getActionCommand().equals("Yes")) {
+								setingObject.gap=Integer.parseInt(gapInput.getText());
+								setingObject.mismatch=Integer.parseInt(misMatchInput.getText());
+								setingObject.match=Integer.parseInt(matchInput.getText());
+							}
+							
+						}
+						
+					});
 					JButton No = new JButton("No");
 					No.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
@@ -646,6 +659,7 @@ public class UIV4 extends JFrame implements ActionListener {
 	}
 
 	public void RNAmethod() {
+		Settings setingObject = new Settings(-2, 1, -1);
 		JFrame RNAFrame = new JFrame("RNA Align");
 		RNAFrame.setSize(530, 150);
 		RNAFrame.setLayout(new FlowLayout());
@@ -759,6 +773,19 @@ public class UIV4 extends JFrame implements ActionListener {
 					JPanel YoN = new JPanel();
 					YoN.setLayout(new FlowLayout());
 					JButton Yes = new JButton("Yes");
+					Yes.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							if(e.getActionCommand().equals("Yes")) {
+								setingObject.gap=Integer.parseInt(gapInput.getText());
+								setingObject.mismatch=Integer.parseInt(misMatchInput.getText());
+								setingObject.match=Integer.parseInt(matchInput.getText());
+							}
+							
+						}
+						
+					});
 					JButton No = new JButton("No");
 					No.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
@@ -805,5 +832,13 @@ public class UIV4 extends JFrame implements ActionListener {
 		RNAFrame.add(Save);
 		RNAFrame.add(Return);
 		RNAFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}
+class Settings{
+	int gap, match, mismatch;
+	public Settings(int i, int j, int v) {
+		gap=i;
+		match =j;
+		mismatch=v;
 	}
 }
