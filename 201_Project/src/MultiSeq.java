@@ -1,5 +1,19 @@
+import java.util.ArrayList;
 
 public class MultiSeq {
+	
+	public ArrayList<String> list = new ArrayList<String>();
+	
+	public String align() {
+		if (list.size() == 3)
+			return multiSeqAlign(list.get(0), list.get(1), list.get(2));
+		if (list.size() == 4)
+			return multiSeqAlign(list.get(0), list.get(1), list.get(2), list.get(3));
+		if (list.size() == 5)
+			return multiSeqAlign(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4));
+		else
+			return "You must add 3-5 strands before aligning.";
+	}
 
 	public String multiSeqAlign(String str1, String str2, String str3) {
 		Alignable al = new Alignable(); 		
@@ -110,5 +124,14 @@ public class MultiSeq {
 		}
 		
 		return result;
+	}
+	
+	public void clear() {
+		list.clear();
+	}
+	
+	public void add(String str) {
+		if (list.size() < 5)
+			list.add(str);
 	}
 }
