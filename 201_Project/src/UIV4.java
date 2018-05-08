@@ -455,52 +455,6 @@ public class UIV4 extends JFrame implements ActionListener {
 
 			}
 		});
-		JButton Setting = new JButton("Setting");
-		Setting.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("Setting")) {
-					JFrame set = new JFrame("Setting");
-					set.setSize(300, 150);
-					set.setLocation(300, 300);
-					set.setLayout(new FlowLayout());
-					set.setVisible(true);
-					
-					JPanel setG = new JPanel();
-					setG.setLayout(new GridLayout(3, 2));
-					JLabel gap = new JLabel("Gap");
-					setG.add(gap);
-					TextField gapInput = new TextField(6);
-					setG.add(gapInput);
-					
-					JLabel match = new JLabel("Match");
-					setG.add(match);
-					TextField matchInput = new TextField(6);
-					setG.add(matchInput);
-					
-					JLabel misMatch = new JLabel("Mismatch");
-					setG.add(misMatch);
-					TextField misMatchInput = new TextField(13);
-					setG.add(misMatchInput);
-					set.add(setG);
-					
-					JPanel YoN = new JPanel();
-					YoN.setLayout(new FlowLayout());
-					JButton Yes = new JButton("Yes");
-					JButton No = new JButton("No");
-					No.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							if (e.getActionCommand().equals("No")) {
-								set.setVisible(false);
-							}
-						}
-					});
-					YoN.add(Yes);
-					YoN.add(No);
-					set.add(YoN);
-				}
-			}
-		});
-		re.add(Setting);
 		re.add(Return);
 		ProtienFrame.add(ButtonG);
 		ProtienFrame.add(re);
