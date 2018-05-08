@@ -152,14 +152,14 @@ public class UIV4 extends JFrame implements ActionListener {
 
 	private void HelpMethod() {
 		JFrame Help = new JFrame("Help");
-		Help.setSize(600, 500);
+		Help.setSize(750, 400);
 		Help.setLocation(450, 150);
 		Help.setLayout(new FlowLayout());
 		Help.setVisible(true);
 		
 		JTextArea He = new JTextArea();
 		JScrollPane jsp = new JScrollPane(He);
-		He.append(  "Align : Input two strings and you will get the Needleman Wunsch Alignment of the strings. \r\n" + 
+		He.append(  "Align: Input two strings and you will get the Needleman Wunsch Alignment of the strings. \r\n" + 
 					"\r\n" + 
 					"Save: Saves the alignment of the two inputted strings. \r\n" + 
 					"\r\n" + 
@@ -167,13 +167,15 @@ public class UIV4 extends JFrame implements ActionListener {
 					"\r\n" + 
 					"Setting: Allows you to change the criteria by which the best alignment is found.\r\n"+
 					"\r\n" +
+					"Blosum80matrix: Allows you to view the relationship between two strings of the same length in the Blosum80matrix. \r\n" + 
+					"\r\n" +
+					"Blosum62matrix: Allows you to view the relationship between two strings of the same length in the Blosum62matrix. \r\n" + 
+					"\r\n" +
 					"Search NCBI: Search the NCBI website for the FASTA sequence related to the accession number entered.\r\n" + 
 					"\r\n" + 
-					"Search Saved alignments: Searches saved alignments for alignments where you used the entered sequence.\r\n" + 
-					"\r\n" +
-					"");
+					"Search Saved alignments: Searches saved alignments for alignments where you used the entered sequence.\r\n"
+					);
 		Help.add(jsp);
-	}
 
 	private void SearchMethod() {
 		JFrame SearchFrame = new JFrame("Search");
