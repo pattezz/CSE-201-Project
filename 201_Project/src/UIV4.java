@@ -513,7 +513,7 @@ public class UIV4 extends JFrame implements ActionListener {
 				String a = DNAInput.getText();
 				String b = DNAInput2.getText();
 				Alignable s = new Alignable();
-				return Alignable.align(a, b);
+				return Alignable.align(a, b,setingObject.gap,setingObject.match,setingObject.mismatch);
 
 			}
 		});
@@ -691,9 +691,7 @@ public class UIV4 extends JFrame implements ActionListener {
 				String a = RNAInput.getText();
 				String b = RNAInput2.getText();
 				Alignable s = new Alignable();
-
-				return Alignable.align(a, b);
-
+				return Alignable.align(a, b,setingObject.gap,setingObject.match,setingObject.mismatch);
 			}
 		});
 
